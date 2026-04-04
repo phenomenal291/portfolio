@@ -44,7 +44,6 @@
 
           (this should be the same across all pages)
          -->
-        My Portfolio
       </span>
       <a class="button" href="../index.html">
         <span class="button-text">← Back to Portfolio</span>
@@ -63,9 +62,9 @@
             - Change the 'body-text' text to a short and sweet description of your project (maybe the same as the one on the project card)
             - Change "desktop.jpeg" to the image filename you uploaded in the assets/images folder.
           -->
-        <div class="main-title">Project Name</div>
-        <div class="body-text">A small description about the project goes here, get the reader hooked on the project and tell them why they should continue to read this page. Give it a sweet tagline.</div>
-        <image class="project-header-image" src="../assets/images/desktop.jpeg">
+        <div class="main-title">Inverse Conway's Game of Life</div>
+        <div class="body-text">A C++ simulation solving the Inverse Game of Life using a Genetic Algorithm and Bitboards.</div>
+        <image class="project-header-image" src="../assets/images/inverse-game-of-life/game-of-life-demo2.png">
       </div>
 
       <!-- PROJECT DETAILS -->
@@ -76,17 +75,58 @@
         - Add paragraphs using the <div class="body-text"></div> elements in the "project-details-content"
       -->
       <div id="project-details">
-        <div class="subheader-text">Project Details / Background</div>
-        <div class="project-details-content">
-          <div class="body-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tristique risus nec feugiat in fermentum. Sed id semper risus in hendrerit gravida. Placerat duis ultricies lacus sed. Id neque aliquam vestibulum morbi blandit cursus risus. Elit pellentesque habitant morbi tristique senectus et netus et. Elementum tempus egestas sed sed risus pretium quam. Nibh ipsum consequat nisl vel pretium lectus quam id leo. Vitae congue mauris rhoncus aenean vel elit.</div>
-          <div class="body-text">Vitae justo eget magna fermentum. Imperdiet nulla malesuada pellentesque elit eget gravida. Aliquet nec ullamcorper sit amet. Aliquet sagittis id consectetur purus. Ac tortor dignissim convallis aenean. Enim neque volutpat ac tincidunt vitae. Lobortis feugiat vivamus at augue. Platea dictumst vestibulum rhoncus est pellentesque elit ullamcorper. Viverra orci sagittis eu volutpat. Massa tincidunt nunc pulvinar sapien et ligula. Donec enim diam vulputate ut.</div>
+
+        <div class="subheader-text">What is Game of Life ?</div>
+          <div class="project-details-content">
+            <div class="body-text">
+              Okay I am sorry for the messy image above and straightly answer the question. Conway's Game of Life (GOL) is a game played by itself on a 2D board based on some rules.
+              Each cell in a board has 2 state (Dead or Alive) and will interchange based on:<br>
+              1. Any live cell with fewer than two live neighbours dies, as if by underpopulation.<br>
+              2. Any live cell with two or three live neighbours lives on to the next generation.<br>
+              3. Any live cell with more than three live neighbours dies, as if by overpopulation.<br>
+              4. Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.
+            </div>
+
+            <div class="body-text">
+              There is a fun fact that this game is proved to be Turing Complete, meaning it can theoretically simulate a computer.
+              Because it can perform basic logic gates like NAND, NOR.
+            </div>
+
+              <div class="gallery-image-container">
+                <img src="../assets/images/inverse-game-of-life/game-of-life-example.png" style="max-height: 300px" class="gallery-image">
+              </div>
+
+
+          <div class="subheader-text">What am I gonna do with here ?</div>
+            <div class="body-text">
+              The GOL athough has some fixed patterns, it just a chaotic, become unrecognizable after few phases, and unreversible. Therefore, I try applying Machine Learning from scratch to recreate an image from a random seed of GOL.
+            </div>
+            <div class="body-text">
+              I choose the classic Genetic Algorithm (GA) for programming, comes along with the Bitboard data structure optimization, which allow me to run with larger genomes. Implementing Bitboard is a rough journey, battling with bit operation and hard stuck to understand (even with Gemini helping me). When coding GA, I found out that there're many variants for the Selection, Crossover and each will give the output diferrently.
+              About the detail, I suggest you to visit my github for more information 
+            </div>
+
+            <a class="button" href="https://github.com/phenomenal291/inverse-game-of-life" target="_blank" style="margin: 0; background: #000; color: #fff;">
+              <span class="button-text">Check out the project's Repo</span>
+              <image src="../assets/icons/arrow-right.svg" class="right-arrow-icon" style="filter: invert(1);"/>
+            </a>
         </div>
-      </div>
+
+
+          <div class="subheader-text">How does it run?</div>
+            <div class="body-text">
+
+              At first, I really satisfy with the outcomes, it give a "kinda clear" image that look the same as the desired image. Looking closely to the metrics, those are just roughly quite good, may need more optimization. At the end of the day, the project gave me a try with practicing implementing OOP, ML from scratch and a "recognizable" outputs. 
+            </div>
+
+
+          </div>
+
 
       <!-- IMAGE GALLERY -->
       <div id="project-gallery">
         <!-- TODO - Change the 'subheader-text' to whatever you want the Gallery section header to say -->
-        <div class="subheader-text">Image Gallery</div>
+        <div class="subheader-text"></div>
         <div class="project-gallery-content">
             <!-- 
               TODO
@@ -112,16 +152,12 @@
                   - IMAGE_CAPTION: to the caption of the image
             -->
             <div class="gallery-image-container half-width">
-              <img src="../assets/images/code.jpeg" class="gallery-image">
-              <span class="image-caption">Give your image a caption. People love context.</span>
+              <img src="../assets/images/inverse-game-of-life/game-of-life-demo1.png" class="gallery-image">
+              <span class="image-caption">First draw the image we want to recreate</span>
             </div>
             <div class="gallery-image-container half-width">
-              <img src="../assets/images/sketchbook.jpeg" class="gallery-image">
-              <span class="image-caption">Give your image a caption. People love context.</span>
-            </div>
-            <div class="gallery-image-container">
-              <img src="../assets/images/camera.jpeg" class="gallery-image">
-              <span class="image-caption">Give your image a caption. People love context.</span>
+              <img src="../assets/images/inverse-game-of-life/game-of-life-demo2.png" class="gallery-image">
+              <span class="image-caption">The sorted preditions after running GA for a while</span>
             </div>
         </div>
       </div>

@@ -1,0 +1,30 @@
+name: Auto-index Markdown Blog Posts
+
+on:
+  push:
+    paths:
+      - 'markdown/**.md'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Run indexer script
+        run: python auto_indexer.py
+
+      - name: Commit and Push changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add data/posts.js
+          git diff --quiet && git diff --staged --quiet || git commit -m "chore: auto-update blog index [skip ci]"
+          git push

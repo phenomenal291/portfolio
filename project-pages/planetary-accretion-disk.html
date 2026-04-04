@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+    <!-- 
+      TODO
+
+      Upload your Unemployable (or whatever photo you like) to the assets/images folder
+      and change the name of the image below to match the uploaded one
+
+      Change the title in the <title> tag to whatever you would like the title of your portfolio to be
+
+      This should be the same across all pages.
+     -->
+     <link rel="icon" href="../assets/images/1311.png" />
+     <title>Unemployables Portfolio</title>
+    <meta name="description" content="A portfolio template for the Unemployables community.">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+		<link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/typography.css">
+    <link rel="stylesheet" href="../css/utilities.css">
+
+		<script defer src="../js/script.js"></script>
+	</head>
+	<body>
+    <!-- NAVBAR -->
+    <div class="navbar">
+      <span class="nav-title">
+        <!-- 
+          TODO - Change the "Portfolio Title" to whatever you want displayed in the top left
+
+          (this should be the same across all pages)
+         -->
+      </span>
+      <a class="button" href="../index.html">
+        <span class="button-text">← Back to Portfolio</span>
+      </a>
+    </div>
+
+    <!-- MAIN PAGE CONTENT -->
+    <div id="main-content">
+
+      <!-- PROJECT HEADER -->
+      <div id="project-header">
+          <!-- 
+            TODO
+
+            - Change the 'main-title' text to the name of your project
+            - Change the 'body-text' text to a short and sweet description of your project (maybe the same as the one on the project card)
+            - Change "desktop.jpeg" to the image filename you uploaded in the assets/images folder.
+          -->
+        <div class="main-title">Planetary Accretion Disk</div>
+        <div class="body-text">A C++ Physics Engine and Barnes-Hut simulation from scratch demonstrates the planetary accretion disk.</div>
+        <!-- Adjusted the size of the header image so it isn't overly huge -->
+        <image class="project-header-image" src="../assets/images/planetary-accretion-disk/planetary-accretion-disk-demo-5000.png" style="max-height: 500px; width: 100%; object-fit: cover; border-radius: 12px;">
+      </div>
+
+      <!-- PROJECT DETAILS -->
+      <!-- 
+        TODO
+
+        - Change the 'subheader-text' to whatever header you want for project details
+        - Add paragraphs using the <div class="body-text"></div> elements in the "project-details-content"
+      -->
+      <div id="project-details">
+        <div class="subheader-text">Why I do this project?</div>
+        <div class="project-details-content">
+          <div class="body-text">So the inspiration started after I finished the "The Three-body problem" novel written by Liu Cixin. I was amazed that the book refers to many familiar terms such as Genetic Algorithms, John von Neumann's computer architecture, String theory. Talk about the book, although it has sucessfully showcased a science-fiction world where many macro physics theory are existed and in use ( I am really satisfied with those concepts, hopefully in the near future humans can perform the dimension-folding), the storyline is something loss in the charater background, make me exhausted. I gonna start the second book "Dark Forest" soon, to see what is next for the human beings on Earth.</div>
+        </div>
+
+
+        <div class="subheader-text">About the project</div>
+        <div class="project-details-content">
+          <div class="body-text">I choose to start this from scratch with my familiar language C++ and a new graphics library "Raylib". Honestly, the Raylib is insanely simple far from the SFML library that I used in previous projects where I got troubles in get the Fonts, to many declare just to display text. I heard about the heavy, professional OpenGL for 3D project, but that's might be something far in the future.  </div>
+          <div class="body-text">I belive that implementing the Barnes-Hut algorithm from scratch is a fun way to practice tree data structure in DSA again. The Quadtree (in 2d) or OcTree(in 3d) have the shape like M Tree, a node have multiple nodes while the parent is left empty because its particles are assigned smaller in its children (this is just my thoughs and maynot be correct, feel free to correct me :>).    </div>
+        </div>
+
+        <div class="subheader-text">Results</div>
+        <div class="project-details-content">
+          <div class="body-text">
+            About the visualization of the results, for me, those are good looking and satisfy my imagination when starting the projects. However, the more important aspecs like the performance and optimization are still confused to me.
+          </div>
+
+          <div class="body-text">
+            Theoretically, the program is optimized to O(N.logN), for the max N I have tested so far is 5000, so big O gonna approximately bellow 19000. Thats extremely small comparing to 5000^2 ( ~ 25 mil). 
+            Even so, I got very low FPS for all experiments, around 10-20 FPS (N = 2000) down to 5 FPS (N = 5000). I can understand that I am only working with the algorithm itself, not the graphical performance.
+            One more thing could be the problem is that my laptop don't have a GPU ( or not if I optimized well).
+          </div>
+
+          <div class="body-text">
+            In the end, This project brings me joy and nostagia about those physics, DSA concepts that I have learned in past few years.
+            After this one, I intend to continue with other physical simulation and exihit the art make from just simple rules.
+          </div>
+          <!-- Added a nice link button to the GitHub repository -->
+          <a class="button" href="https://github.com/phenomenal291/Planetary-Accretion-Disk" target="_blank" style="margin: 0; background: #000; color: #fff;">
+            <span class="button-text">Check out the project's Repo</span>
+            <image src="../assets/icons/arrow-right.svg" class="right-arrow-icon" style="filter: invert(1);"/>
+          </a>
+        </div>
+      </div>
+      <!-- IMAGE GALLERY -->
+      <div id="project-gallery">
+        <!-- TODO - Change the 'subheader-text' to whatever you want the Gallery section header to say -->
+        <div class="subheader-text">Some Images</div>
+        <div class="project-gallery-content">
+            <!-- 
+              TODO
+
+              This is where the images in the gallery live. Here's a simple gallery image for you to copy:
+
+              Full Width Image:
+
+                <div class="gallery-image-container">
+                  <img src="../assets/images/IMAGE_NAME" class="gallery-image">
+                  <span class="image-caption">IMAGE_CAPTION</span>
+                </div>
+
+              Half Width Image: 
+
+                <div class="gallery-image-container half-width">
+                  <img src="../assets/images/IMAGE_NAME" class="gallery-image">
+                  <span class="image-caption">IMAGE_CAPTION</span>
+                </div>
+
+              - To add an image to the this area, copy one of the above, paste it below this comment, and change the following:
+                  - IMAGE_NAME: the name of the image file in assets/images
+                  - IMAGE_CAPTION: to the caption of the image
+            -->
+            <div class="gallery-image-container half-width">
+              <img src="../assets/images/planetary-accretion-disk/planetary-accretion-disk-demo-1500.png"  class="gallery-image" >
+              <span class="image-caption">3D demo with 1500 particles</span>
+            </div>
+            <div class="gallery-image-container half-width">
+              <img src="../assets/images/planetary-accretion-disk/planetary-accretion-disk-demo-2000.png" class="gallery-image">
+              <span class="image-caption">3D demo with 2000 particles.</span>
+            </div>
+            <div class="gallery-image-container">
+              <img src="../assets/images/planetary-accretion-disk/planetary-accretion-disk-demo-5000.png"   class="gallery-image">
+              <span class="image-caption">3D demo with 5000 particles</span>
+            </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div id="footer" style="padding-top: 40px; border-top: 1px solid rgba(0,0,0,0.1); margin-top: 40px; text-align: center; width: 100%; opacity: 0.6; font-size: 14px;">
+      Based on <a href="https://github.com/ndoherty-xyz/unemployables-portfolio-template" target="_blank">Unemployables Portfolio Template</a> by <a href="https://twitter.com/ndoherty_xyz" target="_blank">ndoherty-xyz</a>
+    </div>
+
+  </body>

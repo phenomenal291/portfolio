@@ -104,3 +104,88 @@ a.no-underline:hover {
     padding: 20px 20px;
   }
 }
+/* Terminal UI Settings */
+.terminal-ui {
+  background-color: #1e1e1e;
+  border-radius: 8px;
+  overflow: hidden;
+  color: #fff;
+  font-family: 'Courier New', Courier, monospace;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  margin-top: 10px;
+  padding-bottom: 20px;
+  max-width: 800px;
+}
+
+.terminal-header {
+  background-color: #333;
+  padding: 10px 15px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #000;
+}
+
+.terminal-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+
+.terminal-dot.red { background-color: #ff5f56; }
+.terminal-dot.yellow { background-color: #ffbd2e; }
+.terminal-dot.green { background-color: #27c93f; }
+
+.terminal-title {
+  margin-left: 10px;
+  font-size: 14px;
+  color: #ccc;
+}
+
+.terminal-body {
+  padding: 20px;
+  font-size: 15px;
+  line-height: 1.5;
+  min-height: 150px;
+}
+
+.terminal-prompt {
+  color: #27c93f;
+  margin-right: 5px;
+}
+
+.terminal-output {
+  color: #ccc;
+  margin: 5px 0 15px 0;
+  white-space: pre-wrap;
+}
+
+.terminal-link {
+  color: #00bcd4;
+  text-decoration: underline;
+  display: block;
+}
+
+.terminal-command-link {
+  color: #ffbd2e;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.terminal-command-link:hover, .terminal-link:hover {
+  text-decoration: underline;
+  color: #ff5f56;
+}
+
+.cursor {
+  display: inline-block;
+  width: 10px;
+  height: 15px;
+  background-color: #fff;
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}

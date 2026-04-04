@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+    <link rel="icon" href="../assets/images/1311.png" />
+		<title>Blog Post - Phuc's Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+		<link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/typography.css">
+    <link rel="stylesheet" href="../css/utilities.css">
+
+    <!-- Marked.js for parsing markdown files -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+		<script defer src="../js/script.js"></script>
+    
+    <script>
+      function titleFromSlug(slug) {
+        return slug
+          .replace(/[-_]+/g, ' ')
+          .replace(/\b\w/g, (c) => c.toUpperCase());
+      }
+
+      function stripMarkdown(md) {
+        return md
+          .replace(/```[\s\S]*?```/g, ' ')
+          .replace(/`[^`]*`/g, ' ')
+          .replace(/!\[[^\]]*\]\([^\)]*\)/g, ' ')
+          .replace(/\[[^\]]*\]\([^\)]*\)/g, '$1')
+          .replace(/^#{1,6}\s+/gm, '')
+          .replace(/[>*_~#-]/g, ' ')
+          .replace(/\s+/g, ' ')
+          .trim();
+      }
+
+      function parseSimpleFrontMatter(markdown) {
+        const trimmed = markdown.trimStart();
+        if (!trimmed.startsWith('---')) {
+          return { metadata: {}, body: markdown };
+        }
+
+        const endIndex = trimmed.indexOf('\n---', 3);
+        if (endIndex === -1) {
+          return { metadata: {}, body: markdown };
+        }
+
+        const rawMeta = trimmed.slice(3, endIndex).trim();
+        const body = trimmed.slice(endIndex + 4).trimStart();
+        const metadata = {};
+
+        rawMeta.split('\n').forEach((line) => {
+          const idx = line.indexOf(':');
+          if (idx === -1) return;
+          const key = line.slice(0, idx).trim().toLowerCase();
+          const value = line.slice(idx + 1).trim().replace(/^['\"]|['\"]$/g, '');
+          if (key) metadata[key] = value;
+        });
+
+        return { metadata, body };
+      }
+
+      document.addEventListener('DOMContentLoaded', async () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const slug = urlParams.get('post');
+
+        if (!slug) {
+          document.getElementById('dynamic-post-content').innerHTML = '<div class="body-text">Error: No post selected.</div>';
+          return;
+        }
+
+        try {
+          const response = await fetch(`../markdown/${encodeURIComponent(slug)}.md?v=${Date.now()}`, { cache: 'no-store' });
+          if (!response.ok) {
+            document.getElementById('dynamic-post-content').innerHTML = '<div class="body-text">Error: Markdown file not found. If this post was deleted, it should be removed from blog cards after refresh/deploy.</div>';
+            return;
+          }
+
+          const markdownContent = await response.text();
+          const { metadata, body } = parseSimpleFrontMatter(markdownContent);
+          const headingMatch = body.match(/^#\s+(.+)$/m);
+
+          const title = metadata.title || (headingMatch ? headingMatch[1].trim() : titleFromSlug(slug));
+          const date = metadata.date || '';
+          let description = metadata.description || '';
+
+          if (!description) {
+            const plain = stripMarkdown(body);
+            description = plain.slice(0, 160) + (plain.length > 160 ? '...' : '');
+          }
+
+          document.title = `${title} - My Portfolio`;
+          document.querySelector('.main-title').innerText = title;
+          document.querySelector('.body-text').innerText = date ? `${date} • By Phuc` : 'By Phuc';
+
+          // Remove the first H1 if present so it does not duplicate the page title.
+          const bodyWithoutFirstH1 = body.replace(/^#\s+.+\n?/, '').trimStart();
+          document.getElementById('dynamic-post-content').innerHTML = marked.parse(bodyWithoutFirstH1 || body);
+        } catch (error) {
+          document.getElementById('dynamic-post-content').innerHTML = `<div class="body-text">Error loading content: ${error.message}</div>`;
+        }
+      });
+    </script>
+	</head>
+	<body>
+    <!-- NAVBAR -->
+    <div class="navbar">
+      <span class="nav-title">My Portfolio</span>
+      <a class="button" href="../blog.html">
+        <span class="button-text">← Back to Blog</span>
+      </a>
+    </div>
+
+    <!-- MAIN PAGE CONTENT -->
+    <div id="main-content">
+
+      <!-- POST HEADER -->
+      <div id="project-header">
+        <div class="main-title">Blog Post Title Here</div>
+        <div class="body-text">Date Here • By Phuc</div>
+      </div>
+
+    <!-- POST CONTENT -->
+    <div id="project-details">
+      <div id="dynamic-post-content" class="project-details-content">
+        <div class="body-text">
+          Loading content...
+        </div>
+      </div>
+      </div>
+
+    </div>
+
+    <div id="footer" style="padding-top: 40px; border-top: 1px solid rgba(0,0,0,0.1); margin-top: 40px; text-align: center; width: 100%; opacity: 0.6; font-size: 14px;">
+      Based on <a href="https://github.com/ndoherty-xyz/unemployables-portfolio-template" target="_blank">Unemployables Portfolio Template</a> by <a href="https://twitter.com/ndoherty_xyz" target="_blank">ndoherty-xyz</a>
+    </div>
+  </body>
+</html>

@@ -115,3 +115,41 @@ Github Pages allows us to host this website for free! It's pretty simple to set 
 ## That's it!
 Feel free to send me pictures of your portfolio website once it's up and running. Would love to see them!
 https://twitter.com/ndoherty_xyz
+
+
+
+## Blog workflow (markdown-first)
+Blog cards and blog post pages now load directly from files in the `markdown` folder.
+
+### Add a post
+1. Create a new file in `markdown`, for example `my-first-post.md`.
+2. Add front matter at the top:
+
+```md
+---
+title: My First Post
+date: 2026-04-04
+description: A short summary shown on the blog card.
+---
+
+# My First Post
+
+Your content here.
+```
+
+Notes:
+- `slug` is the markdown filename without `.md`.
+- If front matter is missing, the system falls back to title from the first `# Heading`.
+
+### Delete a post
+1. Delete the corresponding `.md` file from `markdown`.
+2. Commit and push.
+3. After refresh/deploy, the blog card is removed automatically.
+
+### Add blog images
+1. Put images in `assets/images/blog`.
+2. Reference them in markdown with:
+
+```md
+![caption](../assets/images/blog/your-image.png)
+```

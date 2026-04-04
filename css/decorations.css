@@ -1,0 +1,145 @@
+/* --- Smooth Scrolling --- */
+html {
+  scroll-behavior: smooth;
+}
+
+/* --- Global Minimal Background --- */
+body {
+  /* Subtle dot grid for a tech/minimal aesthetic */
+  background-image: radial-gradient(#d5d5d5 1px, transparent 1px);
+  background-size: 20px 20px;
+  background-color: #ffffff;
+}
+
+/* --- Reveal Animation on Scroll --- */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* --- Portfolio Header Decorations --- */
+#portfolio-header {
+  position: relative;
+}
+
+/* Minimal floating accent */
+#portfolio-header::before {
+  content: '';
+  position: absolute;
+  top: -20%;
+  left: -10%;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(0, 0, 0, 0.03) 0%, rgba(0, 0, 0, 0) 70%);
+  border-radius: 50%;
+  z-index: -1;
+  animation: float-slow 8s ease-in-out infinite alternate;
+}
+
+@keyframes float-slow {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(15px, -15px) scale(1.02); }
+  100% { transform: translate(-5px, 20px) scale(0.98); }
+}
+
+/* Make header text look sleek */
+.main-title {
+  background: linear-gradient(90deg, #000000, #555555);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+  letter-spacing: -1px;
+}
+
+/* --- Project Card Enhancements --- */
+.project-card {
+  transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s ease;
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  padding-bottom: 16px;
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.08);
+}
+
+.project-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
+  border-color: rgba(0,0,0,0.15);
+}
+
+.project-image {
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  margin-bottom: 0px;
+  filter: grayscale(20%); /* Keep imagery a bit desaturated for minimal vibe */
+  transition: filter 0.4s ease;
+}
+
+.project-card:hover .project-image {
+  filter: grayscale(0%);
+}
+
+.project-card-text-container {
+  padding: 16px;
+}
+
+.project-card-actions {
+  padding: 0 16px;
+  display: flex;
+  gap: 12px;
+  margin-top: auto;
+}
+
+/* --- Contact Section Minimal Look --- */
+#contact-section {
+  position: relative;
+  background: #ffffff;
+  padding: 40px;
+  border-radius: 16px;
+  border: 1px solid rgba(0,0,0,0.08);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.02);
+  overflow: hidden;
+}
+
+#contact-section::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 3px;
+  background: #000;
+}
+
+.contact-card {
+  background: white;
+  border: 1px solid rgba(0,0,0,0.1);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.contact-card::after {
+  content: '';
+  position: absolute;
+  top: -1px; bottom: -1px; left: -1px; right: -1px;
+  background: #000000;
+  border-radius: 9px;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.contact-card:hover {
+  transform: translateY(-4px) scale(1.02);
+  border-color: transparent;
+}
+
+.contact-card:hover::after {
+  opacity: 1; /* Crisp black border glow */
+}
+

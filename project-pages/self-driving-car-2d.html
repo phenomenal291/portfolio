@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <link rel="icon" href="../assets/images/1311.png" />
+    <title>Self-Driving Car 2D | Portfolio</title>
+    <meta name="description" content="Self-driving car simulation using neural networks and genetic algorithms in C++ and SFML.">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/typography.css">
+    <link rel="stylesheet" href="../css/utilities.css">
+
+    <script defer src="../js/script.js"></script>
+  </head>
+  <body>
+  <div class="navbar">
+      <span class="nav-title">
+        <!-- 
+          TODO - Change the "Portfolio Title" to whatever you want displayed in the top left
+
+          (this should be the same across all pages)
+         -->
+      </span>
+      <a class="button" href="../index.html">
+        <span class="button-text">← Back to Portfolio</span>
+      </a>
+    </div>
+
+    <div id="main-content">
+      <div id="project-header">
+        <div class="main-title">Self-Driving Car with Neural Networks and Genetic Algorithm</div>
+        <div class="body-text">A C++ and SFML simulation where a population of cars learns to drive through evolution, one generation at a time.</div>
+        <img class="project-header-image" src="../assets/images/sketchbook.jpeg" alt="Self-driving car project preview" style="max-height: 500px; width: 100%; object-fit: cover; border-radius: 12px;">
+      </div>
+
+      <div id="project-details">
+        <div class="subheader-text">What is this project?</div>
+        <div class="project-details-content">
+          <div class="body-text">
+            This project is my 2D self-driving car playground built from scratch in C++ with SFML. The main idea is simple: each car starts with a small random brain, drives inside a map, and tries not to crash. The better cars survive and pass their traits to the next generation.
+          </div>
+          <div class="body-text">
+            I wanted this to stay minimal and educational, so instead of relying on heavy frameworks, I kept the core pieces explicit: sensors, neural network decisions, fitness scoring, and a genetic algorithm loop. That made it easier to inspect mistakes and understand why one generation performs better than the previous one.
+          </div>
+        </div>
+
+        <div class="subheader-text">How does the learning loop work?</div>
+        <div class="project-details-content">
+          <div class="body-text">
+            Every car uses wall sensors and feeds those distances into a tiny neural network. The network outputs control values like steering and speed. If the car hits a wall, it is out. If it travels farther without crashing, it earns higher fitness.
+          </div>
+          <div class="body-text">
+            After each round, the best cars are selected as parents. Their parameters are combined through crossover, then slightly perturbed by mutation. This cycle repeats for many generations, and the behavior gradually improves from random motion to more stable driving.
+          </div>
+          <div class="body-text">
+            The map setup in the repo uses a 1280 x 720 image where black pixels represent walls. Keeping this format fixed made map experiments easier and gave a clear baseline for evaluating whether changes in evolution strategy really help.
+          </div>
+        </div>
+
+        <div class="subheader-text">What I learned and what is next</div>
+        <div class="project-details-content">
+          <div class="body-text">
+            The most interesting part for me was seeing how much behavior can emerge from very simple rules. Even with a compact neural model, selection pressure alone can produce visible improvements over time. It also reminded me that debugging simulation logic is mostly about instrumentation, not guesswork.
+          </div>
+          <div class="body-text">
+            The next upgrades I want are similar to what I listed in the README: richer tracks, better network visualization, saving/loading top performers, and cleaner speed indicators during runs. Those additions should make comparison across experiments much more practical.
+          </div>
+          <a class="button" href="https://github.com/phenomenal291/self-driving-car" target="_blank" style="margin: 0; background: #000; color: #fff;">
+            <span class="button-text">Check out the project's Repo</span>
+            <img src="../assets/icons/arrow-right.svg" class="right-arrow-icon" alt="Arrow icon" style="filter: invert(1);"/>
+          </a>
+        </div>
+      </div>
+
+      <div id="project-gallery">
+        <div class="subheader-text">Image Gallery</div>
+        <div class="project-gallery-content">
+          <div class="gallery-image-container half-width">
+            <img src="../assets/images/sketchbook.jpeg" class="gallery-image" alt="Placeholder image for future simulation screenshot">
+            <span class="image-caption">Placeholder for training view (replace later).</span>
+          </div>
+          <div class="gallery-image-container half-width">
+            <img src="../assets/images/code.jpeg" class="gallery-image" alt="Placeholder image for neural network or debug panel">
+            <span class="image-caption">Placeholder for sensors and neural output visualization.</span>
+          </div>
+          <div class="gallery-image-container">
+            <img src="../assets/images/camera.jpeg" class="gallery-image" alt="Placeholder image for generation comparison">
+            <span class="image-caption">Placeholder for generation progress comparison.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="footer" style="padding-top: 40px; border-top: 1px solid rgba(0,0,0,0.1); margin-top: 40px; text-align: center; width: 100%; opacity: 0.6; font-size: 14px;">
+      Based on <a href="https://github.com/ndoherty-xyz/unemployables-portfolio-template" target="_blank">Unemployables Portfolio Template</a> by <a href="https://twitter.com/ndoherty_xyz" target="_blank">ndoherty-xyz</a>
+    </div>
+  </body>
+</html>
