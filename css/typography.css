@@ -57,3 +57,11 @@ body {
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
 }
+
+.profile-badge {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #1f1f1f;
+}

@@ -38,7 +38,7 @@
     <div id="main-content">
 
       <!-- PORTFOLIO HEADER -->
-      <div id="portfolio-header">
+      <div id="portfolio-header" class="profile-style-subtle">
         <div id="portfolio-header-image-container">
           <!-- 
             TODO
@@ -47,10 +47,11 @@
             - Change the number to point to your Unemployable & replace the OpenSea link with your own
             - If you aren't using an Unemployable as your image, remove the entire "a" element
           -->
-          <!-- <img src="./assets/images/1311.png" class="portfolio-header-image">
-          <a class="no-underline" target="_blank" href="https://opensea.io/assets/0xe0be388ab81c47b0f098d2030a1c9ef190691a8a/1311">
-            <span class="image-caption">Unemployables #1311</span>
-          </a> -->
+          <div class="profile-photo-frame">
+            <img src="./assets/images/profile.png" class="portfolio-header-image" alt="Portrait photo of Phuc">
+            <div class="profile-noise-layer" aria-hidden="true"></div>
+          </div>
+          <span class="profile-badge">AI x Physics x Simulation</span>
         </div>
 
           <!-- 
@@ -63,7 +64,7 @@
         <div id="portfolio-header-text-container">
             <div class="header-text">
               <span class="main-title">Hey, I'm Phuc.</span>
-              <div class="body-text">A Computer Science undergraduate fascinated by AI and Physics Simulation.</div>
+              <div class="body-text">A Computer Science undergraduate building AI systems and physics simulations, with a strong interest in optimization and emergent behavior.</div>
             </div>
             
             <div style="display: flex; gap: 16px; flex-wrap: wrap;">
@@ -87,8 +88,8 @@
       <div id="about-section" class="reveal">
         <span class="subheader-text">About Me</span>
         <div class="about-section-content">
-          <div class="body-text">I am currently a second-year undergraduate at Ho Chi Minh City University of Technology (Vietnam National University), enthusiastically working on projects related to Math, Physics, and Optimization Algorithms.</div>
-          <div class="body-text">Beyond my regular studies, I actively seek out new challenges by joining an AI research group at HCMUT. This gives me the chance to learn cutting-edge technologies and solve real-world problems. Moreover, profoundly inspired by the art of science, I devote my free time to exploring the beauty of programming, algorithm, and physics.</div>
+          <div class="body-text">I am currently a second-year undergraduate at Ho Chi Minh City University of Technology (Vietnam National University), where I focus on projects around mathematics, physics simulation, and optimization algorithms.</div>
+          <div class="body-text">Besides my regular studies, I actively seek out new challenges by joining an AI research group at HCMUT. This gives me the chance to learn cutting-edge technologies and solve real-world problems. Moreover, profoundly inspired by the art of science, I devote my free time to exploring the beauty of programming, algorithm, and physics.</div>
         </div>
       </div>
 
@@ -229,5 +230,11 @@
 
     </div>
 
+    <!-- FOOTER -->
+    <div id="footer" style="padding-top: 40px; border-top: 1px solid rgba(0,0,0,0.1); margin-top: 40px; text-align: center; width: 100%; opacity: 0.6; font-size: 14px;">
+      Based on <a href="https://github.com/ndoherty-xyz/unemployables-portfolio-template" target="_blank">Unemployables Portfolio Template</a> by <a href="https://twitter.com/ndoherty_xyz" target="_blank">ndoherty-xyz</a>
+    </div>
+
+  </body>
 	</body>
 </html>

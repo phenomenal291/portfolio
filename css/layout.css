@@ -43,11 +43,26 @@ body {
   flex-direction: column;
   gap: 10px;
   flex-basis: 50%;
+  max-width: 420px;
+}
+
+.profile-photo-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  border-radius: 14px;
+  overflow: hidden;
 }
 
 .portfolio-header-image {
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 18%;
+}
+
+.profile-badge {
+  align-self: flex-start;
 }
 
 #portfolio-header-text-container {
@@ -206,6 +221,12 @@ body {
 
   #portfolio-header {
     flex-direction: column;
+    align-items: flex-start;
+  }
+
+  #portfolio-header-image-container {
+    width: 100%;
+    max-width: 360px;
   }
 
   .project-card {
@@ -217,6 +238,10 @@ body {
 @media only screen and (max-width: 600px) {
   #main-content {
     margin: 125px 20px;
+  }
+
+  #portfolio-header-image-container {
+    max-width: 100%;
   }
 
   .project-card {
