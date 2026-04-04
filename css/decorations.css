@@ -29,7 +29,7 @@ body {
 }
 
 .profile-style-subtle .profile-photo-frame {
-  border: 1px solid rgba(0, 0, 0, 0.12);
+  border: 2px solid rgba(0, 0, 0, 0.28);
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
   transition: transform 0.35s ease, box-shadow 0.35s ease;
   background: #f7f7f7;
@@ -37,7 +37,7 @@ body {
 
 .profile-style-subtle .profile-photo-frame:hover {
   transform: translateY(-3px);
-  box-shadow: 0 16px 30px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 16px 30px rgba(0, 0, 0, 0.16);
 }
 
 .profile-style-subtle .profile-photo-frame::before,
