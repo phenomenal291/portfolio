@@ -1,6 +1,5 @@
 title: Phuc's Portfolio
 markdown: kramdown
-permalink: /blog/:title/
 
 collections:
   posts:
@@ -12,3 +11,4 @@ defaults:
       type: posts
     values:
       layout: post
+      permalink: /blog/:title/
