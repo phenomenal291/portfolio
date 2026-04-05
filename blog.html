@@ -1,3 +1,7 @@
+---
+layout: null
+---
+
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -11,7 +15,7 @@
     <link rel="stylesheet" href="./css/typography.css">
     <link rel="stylesheet" href="./css/utilities.css">
 
-		<script defer src="./js/script.js"></script>
+    <script defer src="./js/script.js"></script>
 	</head>
 	<body>
     <!-- NAVBAR -->
@@ -34,8 +38,26 @@
 
       <!-- BLOG POSTS SECTION -->
       <div id="blog-section">
-        <!-- Blog posts are loaded dynamically from markdown files via script.js -->
-        <div id="blog-posts-container" class="projects-container"></div>
+        {% assign sorted_posts = site.posts | sort: 'date' | reverse %}
+        <div class="projects-container">
+          {% if sorted_posts.size > 0 %}
+            {% for post in sorted_posts %}
+              <div class="project-card" style="justify-content: space-between; cursor: pointer;" onclick="window.location.href='{{ post.url | relative_url }}'">
+                <div class="project-card-text-container">
+                  <div class="subheader-text project-title">{{ post.title }}</div>
+                  <div class="body-text" style="font-size: 14px; opacity: 0.7; margin-bottom: -8px;">{{ post.date | date: "%B %d, %Y" }}</div>
+                  <div class="body-text project-card-text">{{ post.description | default: post.excerpt | strip_html | strip_newlines }}</div>
+                </div>
+                <a class="button" href="{{ post.url | relative_url }}" onclick="event.stopPropagation();">
+                  <span class="button-text">Read Article</span>
+                  <img src="./assets/icons/arrow-right.svg" class="right-arrow-icon" alt="Right Arrow"/>
+                </a>
+              </div>
+            {% endfor %}
+          {% else %}
+            <div class="body-text" style="opacity: 0.7; margin-top: 8px;">No blog posts yet.</div>
+          {% endif %}
+        </div>
       </div>
 
     </div>

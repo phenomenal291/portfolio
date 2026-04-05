@@ -70,6 +70,19 @@ function parsePostFromMarkdown(filename, markdown) {
   };
 }
 
+function normalizePostForCard(post) {
+  const safePost = post || {};
+  const slug = String(safePost.slug || '').trim();
+
+  return {
+    slug,
+    title: safePost.title || (slug ? titleFromSlug(slug) : 'Untitled Post'),
+    date: safePost.date || '',
+    description: safePost.description || 'No description available.',
+    url: `./blog-pages/blog-template.html?post=${encodeURIComponent(slug)}`
+  };
+}
+
 async function discoverMarkdownFilesFromDirectory() {
   const res = await fetch('./markdown/', { cache: 'no-store' });
   if (!res.ok) return [];
@@ -84,7 +97,14 @@ async function discoverMarkdownFilesFromDirectory() {
 
   doc.querySelectorAll('a[href]').forEach((a) => {
     const href = a.getAttribute('href') || '';
-    const decoded = decodeURIComponent(href.split('/').pop() || '');
+    let decoded = '';
+
+    try {
+      decoded = decodeURIComponent(href.split('/').pop() || '');
+    } catch (error) {
+      return;
+    }
+
     if (/\.md$/i.test(decoded)) {
       names.add(decoded);
     }
@@ -142,6 +162,19 @@ function postDateValue(dateText) {
   return Number.isNaN(value) ? 0 : value;
 }
 
+function getFallbackPosts() {
+  if (!Array.isArray(window.BLOG_POSTS) || window.BLOG_POSTS.length === 0) {
+    return [];
+  }
+
+  const fallbackPosts = window.BLOG_POSTS
+    .map((post) => normalizePostForCard(post))
+    .filter((post) => post.slug);
+
+  fallbackPosts.sort((a, b) => postDateValue(b.date) - postDateValue(a.date));
+  return fallbackPosts;
+}
+
 function createBlogCard(post) {
   const url = post.url || '#';
   const displayDate = post.date || 'Undated';
@@ -173,7 +206,7 @@ function renderNoPostsState(container, message) {
 async function loadBlogPostsFromMarkdown() {
   const markdownFiles = await discoverMarkdownFiles();
   if (markdownFiles.length === 0) {
-    return [];
+    return getFallbackPosts();
   }
 
   const posts = [];
@@ -187,6 +220,10 @@ async function loadBlogPostsFromMarkdown() {
       console.warn('Failed to load markdown post:', filename, error);
     }
   }));
+
+  if (posts.length === 0) {
+    return getFallbackPosts();
+  }
 
   posts.sort((a, b) => postDateValue(b.date) - postDateValue(a.date));
   return posts;

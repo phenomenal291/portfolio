@@ -118,38 +118,33 @@ https://twitter.com/ndoherty_xyz
 
 
 
-## Blog workflow (markdown-first)
-Blog cards and blog post pages now load directly from files in the `markdown` folder.
+## Blog workflow (Jekyll on GitHub Pages)
+The blog now uses Jekyll build-time rendering, which is the default and most reliable workflow on GitHub Pages.
 
 ### Add a post
-1. Create a new file in `markdown`, for example `my-first-post.md`.
-2. Add front matter at the top:
+1. Create a new file in `_posts` named like `YYYY-MM-DD-my-post-title.md`.
+2. Add front matter and content:
 
 ```md
 ---
 title: My First Post
 date: 2026-04-04
-description: A short summary shown on the blog card.
+description: A short summary shown on blog cards.
 ---
 
-# My First Post
-
-Your content here.
+Your markdown content here.
 ```
+3. Commit and push.
+4. GitHub Pages rebuilds and publishes automatically.
 
-Notes:
-- `slug` is the markdown filename without `.md`.
-- If front matter is missing, the system falls back to title from the first `# Heading`.
-
-### Delete a post
-1. Delete the corresponding `.md` file from `markdown`.
+### Edit or delete a post
+1. Edit or remove the corresponding file in `_posts`.
 2. Commit and push.
-3. After refresh/deploy, the blog card is removed automatically.
 
 ### Add blog images
 1. Put images in `assets/images/blog`.
-2. Reference them in markdown with:
+2. Reference images from posts using an absolute path:
 
 ```md
-![caption](../assets/images/blog/your-image.png)
+![caption](/assets/images/blog/your-image.png)
 ```

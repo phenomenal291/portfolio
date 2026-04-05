@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <link rel="icon" href="{{ '/assets/images/1311.png' | relative_url }}" />
+    <title>{{ page.title }} - Phuc's Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="stylesheet" href="{{ '/css/layout.css' | relative_url }}">
+    <link rel="stylesheet" href="{{ '/css/typography.css' | relative_url }}">
+    <link rel="stylesheet" href="{{ '/css/utilities.css' | relative_url }}">
+
+    <script defer src="{{ '/js/script.js' | relative_url }}"></script>
+  </head>
+  <body>
+    <div class="navbar">
+      <span class="nav-title">My Portfolio</span>
+      <a class="button" href="{{ '/blog.html' | relative_url }}">
+        <span class="button-text">← Back to Blog</span>
+      </a>
+    </div>
+
+    <div id="main-content">
+      <div id="project-header">
+        <div class="main-title">{{ page.title }}</div>
+        <div class="body-text">{{ page.date | date: "%B %d, %Y" }} • By Phuc</div>
+      </div>
+
+      <div id="project-details">
+        <div id="post-content" class="project-details-content">
+          {{ content }}
+        </div>
+      </div>
+    </div>
+
+    <div id="footer" style="padding-top: 40px; border-top: 1px solid rgba(0,0,0,0.1); margin-top: 40px; text-align: center; width: 100%; opacity: 0.6; font-size: 14px;">
+      Based on <a href="https://github.com/ndoherty-xyz/unemployables-portfolio-template" target="_blank">Unemployables Portfolio Template</a> by <a href="https://twitter.com/ndoherty_xyz" target="_blank">ndoherty-xyz</a>
+    </div>
+  </body>
+</html>

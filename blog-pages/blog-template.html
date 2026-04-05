@@ -13,6 +13,7 @@
     <!-- Marked.js for parsing markdown files -->
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 
+		<script defer src="../data/posts.js"></script>
 		<script defer src="../js/script.js"></script>
     
     <script>
@@ -60,6 +61,28 @@
         return { metadata, body };
       }
 
+      function normalizeMarkdownSource(markdown) {
+        if (typeof markdown !== 'string') return '';
+
+        let normalized = markdown.replace(/^\uFEFF/, '').replace(/\r\n?/g, '\n');
+        const realNewlineCount = (normalized.match(/\n/g) || []).length;
+        const escapedNewlineCount = (normalized.match(/\\n/g) || []).length;
+
+        // Convert escaped payloads only when they clearly dominate the source text.
+        if (realNewlineCount === 0 || escapedNewlineCount > realNewlineCount * 2) {
+          normalized = normalized
+            .replace(/\\r\\n/g, '\n')
+            .replace(/\\n/g, '\n');
+        }
+
+        return normalized;
+      }
+
+      function findFallbackPostBySlug(slug) {
+        if (!Array.isArray(window.BLOG_POSTS)) return null;
+        return window.BLOG_POSTS.find((post) => post && post.slug === slug) || null;
+      }
+
       document.addEventListener('DOMContentLoaded', async () => {
         const urlParams = new URLSearchParams(window.location.search);
         const slug = urlParams.get('post');
@@ -72,11 +95,24 @@
         try {
           const response = await fetch(`../markdown/${encodeURIComponent(slug)}.md?v=${Date.now()}`, { cache: 'no-store' });
           if (!response.ok) {
-            document.getElementById('dynamic-post-content').innerHTML = '<div class="body-text">Error: Markdown file not found. If this post was deleted, it should be removed from blog cards after refresh/deploy.</div>';
+            const fallbackPost = findFallbackPostBySlug(slug);
+            if (fallbackPost) {
+              document.title = `${fallbackPost.title} - My Portfolio`;
+              document.querySelector('.main-title').innerText = fallbackPost.title;
+              document.querySelector('#project-header .body-text').innerText = fallbackPost.date ? `${fallbackPost.date} • By Phuc` : 'By Phuc';
+              document.getElementById('dynamic-post-content').innerHTML = `
+                <p>${fallbackPost.description || 'This post is temporarily unavailable.'}</p>
+                <blockquote>
+                  <p>Full article content could not be loaded from the markdown source on this deployment.</p>
+                </blockquote>
+              `;
+            } else {
+              document.getElementById('dynamic-post-content').innerHTML = '<div class="body-text">Error: Markdown file not found. If this post was deleted, it should be removed from blog cards after refresh/deploy.</div>';
+            }
             return;
           }
 
-          const markdownContent = await response.text();
+          const markdownContent = normalizeMarkdownSource(await response.text());
           const { metadata, body } = parseSimpleFrontMatter(markdownContent);
           const headingMatch = body.match(/^#\s+(.+)$/m);
 
@@ -91,13 +127,26 @@
 
           document.title = `${title} - My Portfolio`;
           document.querySelector('.main-title').innerText = title;
-          document.querySelector('.body-text').innerText = date ? `${date} • By Phuc` : 'By Phuc';
+          document.querySelector('#project-header .body-text').innerText = date ? `${date} • By Phuc` : 'By Phuc';
 
           // Remove the first H1 if present so it does not duplicate the page title.
-          const bodyWithoutFirstH1 = body.replace(/^#\s+.+\n?/, '').trimStart();
+          const bodyWithoutFirstH1 = body.replace(/^\s*#\s+.+(?:\n|$)/, '').trimStart();
           document.getElementById('dynamic-post-content').innerHTML = marked.parse(bodyWithoutFirstH1 || body);
         } catch (error) {
-          document.getElementById('dynamic-post-content').innerHTML = `<div class="body-text">Error loading content: ${error.message}</div>`;
+          const fallbackPost = findFallbackPostBySlug(slug);
+          if (fallbackPost) {
+            document.title = `${fallbackPost.title} - My Portfolio`;
+            document.querySelector('.main-title').innerText = fallbackPost.title;
+            document.querySelector('#project-header .body-text').innerText = fallbackPost.date ? `${fallbackPost.date} • By Phuc` : 'By Phuc';
+            document.getElementById('dynamic-post-content').innerHTML = `
+              <p>${fallbackPost.description || 'This post is temporarily unavailable.'}</p>
+              <blockquote>
+                <p>Full article content could not be loaded due to a network or deployment issue.</p>
+              </blockquote>
+            `;
+          } else {
+            document.getElementById('dynamic-post-content').innerHTML = `<div class="body-text">Error loading content: ${error.message}</div>`;
+          }
         }
       });
     </script>

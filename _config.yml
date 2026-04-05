@@ -1,0 +1,14 @@
+title: Phuc's Portfolio
+markdown: kramdown
+permalink: /blog/:title/
+
+collections:
+  posts:
+    output: true
+
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
