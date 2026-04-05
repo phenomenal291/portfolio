@@ -148,3 +148,16 @@ Your markdown content here.
 ```md
 ![caption](/assets/images/blog/your-image.png)
 ```
+
+### Test blog locally without pushing
+Do not use `python3 -m http.server` for blog testing after the Jekyll migration, because it does not render Liquid tags such as `{{ post.url }}`.
+
+Use Docker-based Jekyll preview instead:
+
+```bash
+docker run --rm -p 4000:4000 -v "$PWD":/srv/jekyll --entrypoint sh jekyll/jekyll:4 -lc "gem install webrick && /usr/gem/bin/jekyll serve --source /srv/jekyll --destination /srv/jekyll/_site --host 0.0.0.0 --livereload"
+```
+
+Then open:
+- `http://127.0.0.1:4000/`
+- `http://127.0.0.1:4000/blog.html`

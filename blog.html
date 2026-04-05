@@ -20,14 +20,10 @@ layout: null
 	<body>
     <!-- NAVBAR -->
      <div class="navbar">
-      <span class="nav-title">
-        <!-- 
-          TODO - Change the "Portfolio Title" to whatever you want displayed in the top left
-
-          (this should be the same across all pages)
-         -->
-      </span>
-      <a class="button" href="../index.html">
+      <a class="nav-title-link" href="{{ '/index.html' | relative_url }}">
+        <span class="nav-title"></span>
+      </a>
+      <a class="button" href="{{ '/index.html' | relative_url }}">
         <span class="button-text">← Back to Portfolio</span>
       </a>
     </div>
