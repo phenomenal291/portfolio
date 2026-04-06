@@ -1,5 +1,5 @@
 ---
-title: Programming is gonna be no longer a thing
+title: Programming is no longer a thing
 date: 2026-04-06
 description: Express my thoughts about future of programming & my coding stories
 ---
