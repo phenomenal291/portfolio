@@ -1,9 +1,9 @@
-name: Auto-index Markdown Blog Posts
+name: Auto-index _posts Blog Entries
 
 on:
   push:
     paths:
-      - 'markdown/**.md'
+      - '_posts/**/*.md'
   workflow_dispatch:
 
 permissions:

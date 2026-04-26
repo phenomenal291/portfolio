@@ -45,10 +45,10 @@ layout: null
         <div class="projects-container">
           {% if sorted_posts.size > 0 %}
             {% for post in sorted_posts %}
-              <div class="project-card" style="justify-content: space-between; cursor: pointer;" onclick="window.location.href='{{ post.url | relative_url }}'">
+              <div class="project-card card-clickable blog-card" onclick="window.location.href='{{ post.url | relative_url }}'">
                 <div class="project-card-text-container">
                   <div class="subheader-text project-title">{{ post.title }}</div>
-                  <div class="body-text" style="font-size: 14px; opacity: 0.7; margin-bottom: -8px;">{{ post.date | date: "%B %d, %Y" }}</div>
+                  <div class="body-text blog-post-date">{{ post.date | date: "%B %d, %Y" }}</div>
                   <div class="body-text project-card-text">{{ post.description | default: post.excerpt | strip_html | strip_newlines }}</div>
                 </div>
                 <a class="button" href="{{ post.url | relative_url }}" onclick="event.stopPropagation();">
@@ -58,7 +58,7 @@ layout: null
               </div>
             {% endfor %}
           {% else %}
-            <div class="body-text" style="opacity: 0.7; margin-top: 8px;">No blog posts yet.</div>
+            <div class="body-text empty-state-text">No blog posts yet.</div>
           {% endif %}
         </div>
       </div>

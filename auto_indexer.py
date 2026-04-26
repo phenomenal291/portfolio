@@ -2,56 +2,81 @@ import os
 import re
 from datetime import datetime
 
-MARKDOWN_DIR = "markdown"
+POSTS_DIR = "_posts"
 POSTS_FILE = "data/posts.js"
 
-def slugify(text):
-    text = text.lower()
-    text = re.sub(r'[^a-z0-9]+', '-', text)
-    return text.strip('-')
+def parse_front_matter(content):
+    lines = content.splitlines()
+    if not lines or lines[0].strip() != "---":
+        return {}, content
+
+    metadata = {}
+    body_start = 0
+    for i in range(1, len(lines)):
+        if lines[i].strip() == "---":
+            body_start = i + 1
+            break
+
+        if ":" not in lines[i]:
+            continue
+
+        key, value = lines[i].split(":", 1)
+        metadata[key.strip().lower()] = value.strip().strip('"').strip("'")
+
+    return metadata, "\n".join(lines[body_start:]).strip()
+
+
+def parse_post_filename(filename):
+    # Expected Jekyll format: YYYY-MM-DD-slug.md
+    match = re.match(r"^(\d{4})-(\d{2})-(\d{2})-(.+)\.md$", filename)
+    if not match:
+        return None, filename.replace(".md", "")
+
+    year, month, day, slug = match.groups()
+    iso_date = f"{year}-{month}-{day}"
+    return iso_date, slug
+
+
+def title_from_slug(slug):
+    return slug.replace("-", " ").replace("_", " ").title()
 
 def main():
-    print("Scanning markdown directory...")
-    if not os.path.exists(MARKDOWN_DIR):
-        print("Markdown directory not found.")
+    print("Scanning _posts directory...")
+    if not os.path.exists(POSTS_DIR):
+        print("_posts directory not found.")
         return
 
     posts = []
     
-    # Read all markdown files
-    for filename in os.listdir(MARKDOWN_DIR):
+    for filename in os.listdir(POSTS_DIR):
         if filename.endswith(".md"):
-            filepath = os.path.join(MARKDOWN_DIR, filename)
+            filepath = os.path.join(POSTS_DIR, filename)
             
             with open(filepath, "r", encoding="utf-8") as f:
                 content = f.read().strip()
-                
-            # Naive parsing to extract title, date, and description
-            lines = content.split("\n")
-            title = filename.replace(".md", "").replace("-", " ").title()
-            date = datetime.now().strftime("%B %d, %Y")
-            desc = "A blog post by Phuc."
-            
-            # Simple heuristic mapping for typical markdown struct
-            for line in lines:
-                if line.startswith("# "):
-                    title = line[2:].strip()
-                elif line.startswith("*") and line.endswith("*"):
-                    pot_date = line.replace("*", "").strip()
-                    if len(pot_date) > 5:
-                        date = pot_date
-                elif line.startswith("**") and line.endswith("**"):
-                    desc = line.replace("**", "").strip()
-            
-            slug = filename.replace(".md", "")
+
+            metadata, body = parse_front_matter(content)
+            file_date, slug = parse_post_filename(filename)
+
+            title = metadata.get("title") or title_from_slug(slug)
+            date_raw = metadata.get("date") or file_date or datetime.now().strftime("%Y-%m-%d")
+            try:
+                date = datetime.fromisoformat(date_raw).strftime("%B %d, %Y")
+            except ValueError:
+                date = date_raw
+
+            desc = metadata.get("description") or "A blog post by Phuc."
+            if not metadata.get("description") and body:
+                first_line = next((ln.strip() for ln in body.splitlines() if ln.strip()), "")
+                if first_line:
+                    desc = first_line.lstrip("# ").strip()[:160]
             
             posts.append({
                 "title": title,
                 "date": date,
                 "description": desc,
                 "slug": slug,
-                # Try getting file creation time for sorting if needed
-                "sort_key": os.path.getctime(filepath) 
+                "sort_key": os.path.getctime(filepath)
             })
             
     # Sort posts by newest (using file time as heuristic, or just alphabet)

@@ -54,7 +54,7 @@ layout: null
             <img src="./assets/images/profile.png" class="portfolio-header-image" alt="Portrait photo of Phuc">
             <div class="profile-noise-layer" aria-hidden="true"></div>
           </div>
-          <span class="profile-badge">AI x Physics x Simulation</span>
+          <span class="profile-badge">"What I cannot create, I do not understand." - Richard Fenyman</span>
         </div>
 
           <!-- 
@@ -70,10 +70,10 @@ layout: null
               <div class="body-text">A Computer Science undergraduate building AI systems and physics simulations, with a strong interest in optimization and emergent behavior.</div>
             </div>
             
-            <div style="display: flex; gap: 16px; flex-wrap: wrap;">
-              <a class="button" id="my-work-link" style="background: #111; color: white;">
-                <span class="button-text" style="color: white;">View Projects</span> 
-                <image src="./assets/icons/arrow-right.svg" class="right-arrow-icon" style="filter: invert(1);"/>
+            <div class="header-actions">
+              <a class="button button-dark" id="my-work-link">
+                <span class="button-text">View Projects</span> 
+                <image src="./assets/icons/arrow-right.svg" class="right-arrow-icon"/>
               </a>
               
               <a class="button" href="./blog.html">
@@ -123,7 +123,7 @@ layout: null
                 - SMALL_PROJECT_DESCRIPTION: a quick project description (max 4 lines)
                 - PROJECT_PAGE_NAME.html: the html filename for the project (must be in project-pages folder)
           -->
-          <div class="project-card" style="cursor: pointer;" onclick="window.location.href='./project-pages/planetary-accretion-disk.html'">
+          <div class="project-card card-clickable" onclick="window.location.href='./project-pages/planetary-accretion-disk.html'">
             <img src="./assets/images/planetary-accretion-disk/planetary-accretion-disk-demo-5000.png" class="project-image">
             <div class="project-card-text-container">
               <div class="subheader-text project-title">Planetary Accretion Disk Simulation</div>
@@ -140,7 +140,7 @@ layout: null
               </a>
             </div>
           </div>
-          <div class="project-card" style="cursor: pointer;" onclick="window.location.href='./project-pages/inverse-game-of-life.html'">
+          <div class="project-card card-clickable" onclick="window.location.href='./project-pages/inverse-game-of-life.html'">
             <img src="./assets/images/inverse-game-of-life/game-of-life-demo2.png" class="project-image">
             <div class="project-card-text-container">
               <div class="subheader-text project-title">Inverse Game Of Life </div>
@@ -157,17 +157,13 @@ layout: null
               </a>
             </div>
           </div>
-          <div class="project-card" style="cursor: pointer;" onclick="window.location.href='./project-pages/self-driving-car-2d.html'">
+          <div class="project-card card-clickable" onclick="window.location.href='./project-pages/self-driving-car-2d.html'">
             <img src="./assets/images/sketchbook.jpeg" class="project-image">
             <div class="project-card-text-container">
               <div class="subheader-text project-title">Self-Driving Car 2D</div>
               <div class="body-text project-card-text">Autonomous car from scratch using Neural Network and Genetic Algorithms</div>
             </div>
             <div class="project-card-actions">
-              <a class="button" href="./project-pages/self-driving-car-2d.html" onclick="event.stopPropagation();">
-                <span class="button-text">Read More</span>
-                <image src="./assets/icons/arrow-right.svg" class="right-arrow-icon"/>
-              </a>
               <a class="button" href="https://github.com/phenomenal291/self-driving-car" target="_blank" onclick="event.stopPropagation();">
                 <span class="button-text">GitHub</span>
                 <image src="./assets/icons/arrow-right.svg" class="right-arrow-icon"/>
@@ -179,30 +175,30 @@ layout: null
 
       <!-- BLOG SECTION -->
       <div id="blog-section" class="reveal">
-        <span class="subheader-text" style="display: block; margin-bottom: 32px;">Latest Thoughts</span>
+        <span class="subheader-text blog-section-heading">Latest Thoughts</span>
         
         {% assign sorted_posts = site.posts | sort: 'date' | reverse %}
         <div class="projects-container">
           {% if sorted_posts.size > 0 %}
             {% for post in sorted_posts limit:3 %}
-              <div class="project-card" style="justify-content: space-between; cursor: pointer;" onclick="window.location.href='{{ post.url | relative_url }}'">
+              <div class="project-card card-clickable blog-card" onclick="window.location.href='{{ post.url | relative_url }}'">
                 <div class="project-card-text-container">
                   <div class="subheader-text project-title">{{ post.title }}</div>
-                  <div class="body-text" style="font-size: 14px; opacity: 0.7; margin-bottom: -8px;">{{ post.date | date: "%B %d, %Y" }}</div>
+                  <div class="body-text blog-post-date">{{ post.date | date: "%B %d, %Y" }}</div>
                   <div class="body-text project-card-text">{{ post.description | default: post.excerpt | strip_html | strip_newlines }}</div>
                 </div>
-                <a class="button" href="{{ post.url | relative_url }}" onclick="event.stopPropagation();">
+                <!-- <a class="button" href="{{ post.url | relative_url }}" onclick="event.stopPropagation();">
                   <span class="button-text">Read Article</span>
                   <img src="./assets/icons/arrow-right.svg" class="right-arrow-icon" alt="Right Arrow"/>
-                </a>
+                </a> -->
               </div>
             {% endfor %}
           {% else %}
-            <div class="body-text" style="opacity: 0.7; margin-top: 8px;">No latest posts yet.</div>
+            <div class="body-text empty-state-text">No latest posts yet.</div>
           {% endif %}
         </div>
 
-        <div style="margin-top: 1rem;">
+        <div class="view-all-posts-row">
           <a class="button" href="./blog.html">
             <span class="button-text">View All Posts</span>
           </a>
@@ -212,35 +208,35 @@ layout: null
 
       <!-- CONTACT SECTION -->
       <div id="contact-section" class="reveal">
-        <div style="position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; text-align: center;">
-          <span class="subheader-text" style="font-size: 2rem; margin-bottom: 8px;">Feel free to reach out</span>
-          <div class="body-text" style="max-width: 600px; margin-bottom: 32px;">I am open to Work, for DM, and share interests</div>
+        <div class="contact-section-inner">
+          <span class="subheader-text contact-title">Feel free to reach out</span>
+          <div class="body-text contact-description">I am open to Work, for DM, and share interests</div>
           
-          <div class="projects-container" style="gap: 20px; justify-content: center; width: 100%;">
+          <div class="projects-container contact-grid">
             <a class="contact-card" target="_blank" href="https://linkedin.com/in/duongtanphuc/">
               <div class="contact-card-icon-container">
-                <span class="subheader-text" style="margin: 0; font-size: 1.2rem;">in</span>
+                <span class="subheader-text contact-icon-text">in</span>
               </div>
               <span class="button-text">LinkedIn</span>
             </a>
 
             <a class="contact-card" target="_blank" href="https://github.com/phenomenal291">
               <div class="contact-card-icon-container">
-                <span class="subheader-text" style="margin: 0; font-size: 1.2rem;">gh</span>
+                <span class="subheader-text contact-icon-text">gh</span>
               </div>
               <span class="button-text">GitHub</span>
             </a>
 
             <a class="contact-card" target="_blank" href="https://facebook.com/tanphuc.duong.75">
               <div class="contact-card-icon-container">
-                <span class="subheader-text" style="margin: 0; font-size: 1.2rem;">fb</span>
+                <span class="subheader-text contact-icon-text">fb</span>
               </div>
               <span class="button-text">Facebook</span>
             </a>
 
             <a class="contact-card" href="mailto:dtanphuc9@gmail.com">
               <div class="contact-card-icon-container">
-                <span class="subheader-text" style="margin: 0; font-size: 1.2rem;">@</span>
+                <span class="subheader-text contact-icon-text">@</span>
               </div>
               <span class="button-text">Email Me</span>
             </a>
@@ -252,7 +248,7 @@ layout: null
     </div>
 
     <!-- FOOTER -->
-    <div id="footer" style="padding-top: 40px; border-top: 1px solid rgba(0,0,0,0.1); margin-top: 40px; text-align: center; width: 100%; opacity: 0.6; font-size: 14px;">
+    <div id="footer" class="site-footer">
       Based on <a href="https://github.com/ndoherty-xyz/unemployables-portfolio-template" target="_blank">Unemployables Portfolio Template</a> by <a href="https://twitter.com/ndoherty_xyz" target="_blank">ndoherty-xyz</a>
     </div>
 

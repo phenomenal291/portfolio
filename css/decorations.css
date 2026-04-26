@@ -77,22 +77,38 @@ body {
 }
 
 .profile-badge {
+  align-self: flex-start;
   display: inline-flex;
-  align-items: center;
-  gap: 8px;
+  align-items: flex-start;
+  gap: 10px;
   border: 1px solid rgba(0, 0, 0, 0.14);
-  border-radius: 999px;
+  border-radius: 20px;
   padding: 8px 12px;
+  max-width: 100%;
+  font-size: clamp(13px, 1.15vw, 16px);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  text-transform: none;
+  color: #1f1f1f;
+  line-height: 1.45;
   background: rgba(255, 255, 255, 0.88);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
 }
 
 .profile-badge::before {
   content: '';
-  width: 8px;
-  height: 8px;
+  width: 10px;
+  height: 10px;
+  margin-top: 0.35em;
+  flex-shrink: 0;
   border-radius: 1px;
   background: #222;
+}
+
+@media only screen and (max-width: 800px) {
+  .profile-badge {
+    white-space: normal;
+  }
 }
 
 /* Minimal floating accent */
@@ -118,6 +134,7 @@ body {
 /* Make header text look sleek */
 .main-title {
   background: linear-gradient(90deg, #000000, #555555);
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   display: inline-block;

@@ -75,6 +75,19 @@ a.button:hover {
   cursor: pointer;
 }
 
+a.button.button-dark {
+  background: #111;
+  color: #fff;
+}
+
+a.button.button-dark .button-text {
+  color: #fff;
+}
+
+a.button.button-dark .right-arrow-icon {
+  filter: invert(1);
+}
+
 
 /* Footer Styling */
 

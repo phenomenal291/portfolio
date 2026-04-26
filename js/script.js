@@ -292,6 +292,9 @@ function injectFeedbackForm() {
   // Check if we are on a project page (has #project-details or similar)
   const isProjectPage = document.getElementById("project-details") || window.location.pathname.includes("project-pages/");
   const mainContent = document.getElementById("main-content");
+  const repoInfo = getGitHubRepoInfo();
+  const siteBasePath = repoInfo && repoInfo.repo ? `/${repoInfo.repo}` : "";
+  const sendIconSrc = `${siteBasePath}/assets/icons/arrow-right.svg`;
   
   // Prevent double-injection if called multiple times
   if (isProjectPage && mainContent && !document.getElementById("project-feedback")) {
@@ -321,7 +324,7 @@ function injectFeedbackForm() {
 
           <button type="submit" class="button" style="margin-top: 8px; cursor: pointer; background: #111; color: white; border: none; align-self: flex-start; padding: 12px 24px; border-radius: 8px; transition: transform 0.2s ease, box-shadow 0.2s ease;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 15px rgba(0,0,0,0.1)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
             <span class="button-text" style="color: white;">Send Message</span>
-            <img src="${window.location.pathname.includes('project-pages') ? '../' : './'}assets/icons/arrow-right.svg" class="right-arrow-icon" style="filter: invert(1); margin-left: 8px;" alt="Send"/>
+            <img src="${sendIconSrc}" class="right-arrow-icon" style="filter: invert(1); margin-left: 8px;" alt="Send"/>
           </button>
         </form>
 
