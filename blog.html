@@ -1,68 +1,69 @@
 ---
 layout: null
 ---
-
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-    <link rel="icon" href="./assets/images/1311.png" />
-		<title>Blog - Phuc's Portfolio</title>
-    <meta name="description" content="Thoughts on AI, Physics Simulation, and Computer Science.">
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+<head>
+  <meta charset="utf-8">
+  <link rel="icon" href="{{ '/assets/images/1311.png' | relative_url }}">
+  <title>Blog - Phuc Duong</title>
+  <meta name="description" content="Thoughts and technical notes by Phuc Duong.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-		<link rel="stylesheet" href="./css/layout.css">
-    <link rel="stylesheet" href="./css/typography.css">
-    <link rel="stylesheet" href="./css/utilities.css">
+  <link rel="stylesheet" href="{{ '/css/typography.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/css/layout.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/css/utilities.css' | relative_url }}">
+  <script defer src="{{ '/js/script.js' | relative_url }}"></script>
+</head>
+<body>
 
-    <script defer src="./js/script.js"></script>
-	</head>
-	<body>
-    <!-- NAVBAR -->
-     <div class="navbar">
-      <a class="nav-title-link" href="{{ '/index.html' | relative_url }}">
-        <span class="nav-title"></span>
-      </a>
-      <a class="button" href="{{ '/index.html' | relative_url }}">
-        <span class="button-text">← Back to Portfolio</span>
-      </a>
-    </div>
+  <div id="main-content">
+    <!-- NAV -->
+    <nav class="site-nav">
+      <a href="{{ '/' | relative_url }}" class="site-nav-title">phuc duong</a>
+      <ul class="site-nav-links">
+        <li><a href="{{ '/#projects' | relative_url }}" class="nav-link">projects</a></li>
+        <li><a href="{{ '/blog.html' | relative_url }}" class="nav-link active">blog</a></li>
+        <li><a href="{{ '/books.html' | relative_url }}" class="nav-link">books</a></li>
+        <li><a href="{{ '/#contact' | relative_url }}" class="nav-link">contact</a></li>
+      </ul>
+    </nav>
 
-    <!-- MAIN PAGE CONTENT -->
-    <div id="main-content">
-
-      <!-- HEADER -->
-      <div id="about-section">
-        <span class="main-title">My Blog</span>
-        <div class="about-section-content">
-          <div class="body-text">Welcome to my blog! Here I share my thoughts.</div>
-        </div>
+    <!-- HEADER -->
+    <section class="section">
+      <div class="section-header">
+        <span class="section-title">Writing</span>
       </div>
+    </section>
 
-      <!-- BLOG POSTS SECTION -->
-      <div id="blog-section">
-        {% assign sorted_posts = site.posts | sort: 'date' | reverse %}
-        <div class="projects-container">
-          {% if sorted_posts.size > 0 %}
-            {% for post in sorted_posts %}
-              <div class="project-card card-clickable blog-card" onclick="window.location.href='{{ post.url | relative_url }}'">
-                <div class="project-card-text-container">
-                  <div class="subheader-text project-title">{{ post.title }}</div>
-                  <div class="body-text blog-post-date">{{ post.date | date: "%B %d, %Y" }}</div>
-                  <div class="body-text project-card-text">{{ post.description | default: post.excerpt | strip_html | strip_newlines }}</div>
-                </div>
-                <a class="button" href="{{ post.url | relative_url }}" onclick="event.stopPropagation();">
-                  <span class="button-text">Read Article</span>
-                  <img src="./assets/icons/arrow-right.svg" class="right-arrow-icon" alt="Right Arrow"/>
-                </a>
+    <!-- POST ARCHIVE -->
+    <section class="section">
+      {% assign sorted_posts = site.posts | sort: 'date' | reverse %}
+      {% if sorted_posts.size > 0 %}
+        <ul class="item-list">
+          {% for post in sorted_posts %}
+            <li class="item-row">
+              <div class="item-title-row">
+                <a href="{{ post.url | relative_url }}" class="item-title">{{ post.title }}</a>
+                <span class="item-meta">{{ post.date | date: "%Y-%m-%d" }}</span>
               </div>
-            {% endfor %}
-          {% else %}
-            <div class="body-text empty-state-text">No blog posts yet.</div>
-          {% endif %}
-        </div>
-      </div>
+              {% if post.description %}
+                <p class="item-description">{{ post.description }}</p>
+              {% endif %}
+            </li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        <p class="text-muted">No posts published yet.</p>
+      {% endif %}
+    </section>
 
-    </div>
-  </body>
+    <!-- FOOTER -->
+    <footer class="site-footer">
+      <a href="{{ '/' | relative_url }}">← back to portfolio</a>
+      <span>Duong Tan Phuc</span>
+    </footer>
+  </div>
+
+</body>
 </html>

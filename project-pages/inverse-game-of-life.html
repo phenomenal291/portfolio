@@ -1,171 +1,90 @@
-
-
-<!-- 
-  IMPORTANT! 
-  
-  Keep this file unchanged to use as a template for all future project pages. 
-
-  For every new project you add to your portfolio, make a copy of this file in the
-  'project-pages' folder with a name related to the project.
--->
-
-
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-    <!-- 
-      TODO
+<head>
+  <meta charset="utf-8">
+  <link rel="icon" href="../assets/images/1311.png">
+  <title>Inverse Conway's Game of Life - Phuc Duong</title>
+  <meta name="description" content="A C++ simulation solving the Inverse Game of Life using a Genetic Algorithm and Bitboards.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-      Upload your Unemployable (or whatever photo you like) to the assets/images folder
-      and change the name of the image below to match the uploaded one
+  <link rel="stylesheet" href="../css/typography.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/utilities.css">
+  <script defer src="../js/script.js"></script>
+</head>
+<body>
 
-      Change the title in the <title> tag to whatever you would like the title of your portfolio to be
+  <div id="main-content">
+    <!-- NAV -->
+    <nav class="site-nav">
+      <a href="../index.html" class="site-nav-title">phuc duong</a>
+      <ul class="site-nav-links">
+        <li><a href="../index.html#projects" class="nav-link active">projects</a></li>
+        <li><a href="../blog.html" class="nav-link">blog</a></li>
+        <li><a href="../books.html" class="nav-link">books</a></li>
+        <li><a href="../index.html#contact" class="nav-link">contact</a></li>
+      </ul>
+    </nav>
 
-      This should be the same across all pages.
-     -->
-     <link rel="icon" href="../assets/images/1311.png" />
-     <title>Unemployables Portfolio</title>
-    <meta name="description" content="A portfolio template for the Unemployables community.">
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-		<link rel="stylesheet" href="../css/layout.css">
-    <link rel="stylesheet" href="../css/typography.css">
-    <link rel="stylesheet" href="../css/utilities.css">
-
-		<script defer src="../js/script.js"></script>
-	</head>
-	<body>
-    <!-- NAVBAR -->
-    <div class="navbar">
-      <span class="nav-title">
-        <!-- 
-          TODO - Change the "Portfolio Title" to whatever you want displayed in the top left
-
-          (this should be the same across all pages)
-         -->
-      </span>
-      <a class="button" href="../index.html">
-        <span class="button-text">← Back to Portfolio</span>
-      </a>
-    </div>
-
-    <!-- MAIN PAGE CONTENT -->
-    <div id="main-content">
-
-      <!-- PROJECT HEADER -->
-      <div id="project-header">
-          <!-- 
-            TODO
-
-            - Change the 'main-title' text to the name of your project
-            - Change the 'body-text' text to a short and sweet description of your project (maybe the same as the one on the project card)
-            - Change "desktop.jpeg" to the image filename you uploaded in the assets/images folder.
-          -->
-        <div class="main-title">Inverse Conway's Game of Life</div>
-        <div class="body-text">A C++ simulation solving the Inverse Game of Life using a Genetic Algorithm and Bitboards.</div>
-        <image class="project-header-image" src="../assets/images/inverse-game-of-life/game-of-life-demo2.png">
-      </div>
+    <!-- PROJECT HEADER -->
+    <article>
+      <header style="margin-bottom: 24px;">
+        <div style="margin-bottom: 12px;">
+          <a href="../index.html#projects" class="meta-text">← back to projects</a>
+        </div>
+        <h1 class="main-title" style="margin-bottom: 8px;">Inverse Conway's Game of Life</h1>
+        <p class="body-text text-muted">A C++ simulation solving the Inverse Game of Life using a Genetic Algorithm and Bitboards.</p>
+        <img class="project-header-image" src="../assets/images/inverse-game-of-life/game-of-life-demo2.png" alt="Inverse Game of Life demo" style="max-height: 500px; width: 100%; object-fit: cover; border-radius: 4px; border: 1px solid var(--border-color); margin-top: 16px;">
+      </header>
 
       <!-- PROJECT DETAILS -->
-      <!-- 
-        TODO
+      <div id="post-content" class="post-body">
+        <h2>What is Game of Life ?</h2>
+        <p>Okay I am sorry for the messy image above and straightly answer the question. Conway's Game of Life (GOL) is a game played by itself on a 2D board based on some rules.</p>
+        <p>Each cell in a board has 2 state (Dead or Alive) and will interchange based on:</p>
+        <ol>
+          <li>Any live cell with fewer than two live neighbours dies, as if by underpopulation.</li>
+          <li>Any live cell with two or three live neighbours lives on to the next generation.</li>
+          <li>Any live cell with more than three live neighbours dies, as if by overpopulation.</li>
+          <li>Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.</li>
+        </ol>
+        <p>There is a fun fact that this game is proved to be Turing Complete, meaning it can theoretically simulate a computer. Because it can perform basic logic gates like NAND, NOR.</p>
 
-        - Change the 'subheader-text' to whatever header you want for project details
-        - Add paragraphs using the <div class="body-text"></div> elements in the "project-details-content"
-      -->
-      <div id="project-details">
-
-        <div class="subheader-text">What is Game of Life ?</div>
-          <div class="project-details-content">
-            <div class="body-text">
-              Okay I am sorry for the messy image above and straightly answer the question. Conway's Game of Life (GOL) is a game played by itself on a 2D board based on some rules.
-              Each cell in a board has 2 state (Dead or Alive) and will interchange based on:<br>
-              1. Any live cell with fewer than two live neighbours dies, as if by underpopulation.<br>
-              2. Any live cell with two or three live neighbours lives on to the next generation.<br>
-              3. Any live cell with more than three live neighbours dies, as if by overpopulation.<br>
-              4. Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.
-            </div>
-
-            <div class="body-text">
-              There is a fun fact that this game is proved to be Turing Complete, meaning it can theoretically simulate a computer.
-              Because it can perform basic logic gates like NAND, NOR.
-            </div>
-
-              <div class="gallery-image-container">
-                <img src="../assets/images/inverse-game-of-life/game-of-life-example.png" style="max-height: 300px" class="gallery-image">
-              </div>
-
-
-          <div class="subheader-text">What am I gonna do with here ?</div>
-            <div class="body-text">
-              The GOL athough has some fixed patterns, it just a chaotic, become unrecognizable after few phases, and unreversible. Therefore, I try applying Machine Learning from scratch to recreate an image from a random seed of GOL.
-            </div>
-            <div class="body-text">
-              I choose the classic Genetic Algorithm (GA) for programming, comes along with the Bitboard data structure optimization, which allow me to run with larger genomes. Implementing Bitboard is a rough journey, battling with bit operation and hard stuck to understand (even with Gemini helping me). When coding GA, I found out that there're many variants for the Selection, Crossover and each will give the output diferrently.
-              About the detail, I suggest you to visit my github for more information 
-            </div>
-
-            <a class="button" href="https://github.com/phenomenal291/inverse-game-of-life" target="_blank" style="margin: 0; background: #000; color: #fff;">
-              <span class="button-text">Check out the project's Repo</span>
-              <image src="../assets/icons/arrow-right.svg" class="right-arrow-icon" style="filter: invert(1);"/>
-            </a>
+        <div style="margin: 20px 0;">
+          <img src="../assets/images/inverse-game-of-life/game-of-life-example.png" alt="Game of life example" style="max-height: 300px; width: 100%; object-fit: contain; border-radius: 4px; border: 1px solid var(--border-color);">
         </div>
 
+        <h2>What am I gonna do with here ?</h2>
+        <p>The GOL athough has some fixed patterns, it just a chaotic, become unrecognizable after few phases, and unreversible. Therefore, I try applying Machine Learning from scratch to recreate an image from a random seed of GOL.</p>
+        <p>I choose the classic Genetic Algorithm (GA) for programming, comes along with the Bitboard data structure optimization, which allow me to run with larger genomes. Implementing Bitboard is a rough journey, battling with bit operation and hard stuck to understand (even with Gemini helping me). When coding GA, I found out that there're many variants for the Selection, Crossover and each will give the output diferrently. About the detail, I suggest you to visit my github for more information</p>
 
-          <div class="subheader-text">How does it run?</div>
-            <div class="body-text">
+        <p style="margin-top: 24px;">
+          <a href="https://github.com/phenomenal291/inverse-game-of-life" target="_blank" rel="noopener" class="btn-link">Check out the project's Repo ↗</a>
+        </p>
 
-              At first, I really satisfy with the outcomes, it give a "kinda clear" image that look the same as the desired image. Looking closely to the metrics, those are just roughly quite good, may need more optimization. At the end of the day, the project gave me a try with practicing implementing OOP, ML from scratch and a "recognizable" outputs. 
-            </div>
+        <h2>How does it run?</h2>
+        <p>At first, I really satisfy with the outcomes, it give a "kinda clear" image that look the same as the desired image. Looking closely to the metrics, those are just roughly quite good, may need more optimization. At the end of the day, the project gave me a try with practicing implementing OOP, ML from scratch and a "recognizable" outputs.</p>
 
-
+        <h2>Gallery</h2>
+        <div style="display: flex; flex-direction: column; gap: 20px; margin-top: 16px;">
+          <div>
+            <img src="../assets/images/inverse-game-of-life/game-of-life-demo1.png" alt="Target pattern" style="width: 100%; border-radius: 4px; border: 1px solid var(--border-color);">
+            <div class="meta-text" style="margin-top: 4px;">First draw the image we want to recreate</div>
           </div>
-
-
-      <!-- IMAGE GALLERY -->
-      <div id="project-gallery">
-        <!-- TODO - Change the 'subheader-text' to whatever you want the Gallery section header to say -->
-        <div class="subheader-text"></div>
-        <div class="project-gallery-content">
-            <!-- 
-              TODO
-
-              This is where the images in the gallery live. Here's a simple gallery image for you to copy:
-
-              Full Width Image:
-
-                <div class="gallery-image-container">
-                  <img src="../assets/images/IMAGE_NAME" class="gallery-image">
-                  <span class="image-caption">IMAGE_CAPTION</span>
-                </div>
-
-              Half Width Image: 
-
-                <div class="gallery-image-container half-width">
-                  <img src="../assets/images/IMAGE_NAME" class="gallery-image">
-                  <span class="image-caption">IMAGE_CAPTION</span>
-                </div>
-
-              - To add an image to the this area, copy one of the above, paste it below this comment, and change the following:
-                  - IMAGE_NAME: the name of the image file in assets/images
-                  - IMAGE_CAPTION: to the caption of the image
-            -->
-            <div class="gallery-image-container half-width">
-              <img src="../assets/images/inverse-game-of-life/game-of-life-demo1.png" class="gallery-image">
-              <span class="image-caption">First draw the image we want to recreate</span>
-            </div>
-            <div class="gallery-image-container half-width">
-              <img src="../assets/images/inverse-game-of-life/game-of-life-demo2.png" class="gallery-image">
-              <span class="image-caption">The sorted preditions after running GA for a while</span>
-            </div>
+          <div>
+            <img src="../assets/images/inverse-game-of-life/game-of-life-demo2.png" alt="Evolution progress" style="width: 100%; border-radius: 4px; border: 1px solid var(--border-color);">
+            <div class="meta-text" style="margin-top: 4px;">The sorted preditions after running GA for a while</div>
+          </div>
         </div>
       </div>
-    </div>
+    </article>
 
     <!-- FOOTER -->
-    <div id="footer" style="padding-top: 40px; border-top: 1px solid rgba(0,0,0,0.1); margin-top: 40px; text-align: center; width: 100%; opacity: 0.6; font-size: 14px;">
-      Based on <a href="https://github.com/ndoherty-xyz/unemployables-portfolio-template" target="_blank">Unemployables Portfolio Template</a> by <a href="https://twitter.com/ndoherty_xyz" target="_blank">ndoherty-xyz</a>
-    </div>
+    <footer class="site-footer">
+      <a href="../index.html#projects">← back to projects</a>
+      <span>Duong Tan Phuc</span>
+    </footer>
+  </div>
 
-  </body>
+</body>
+</html>

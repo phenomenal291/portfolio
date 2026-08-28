@@ -1,0 +1,121 @@
+---
+layout: null
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <link rel="icon" href="{{ '/assets/images/1311.png' | relative_url }}">
+  <title>Books - Phuc Duong</title>
+  <meta name="description" content="Reading log by Phuc Duong.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="{{ '/css/typography.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/css/layout.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/css/utilities.css' | relative_url }}">
+  <script defer src="{{ '/js/script.js' | relative_url }}"></script>
+</head>
+<body>
+
+  <div id="main-content">
+    <!-- NAV -->
+    <nav class="site-nav">
+      <a href="{{ '/' | relative_url }}" class="site-nav-title">phuc duong</a>
+      <ul class="site-nav-links">
+        <li><a href="{{ '/#projects' | relative_url }}" class="nav-link">projects</a></li>
+        <li><a href="{{ '/blog.html' | relative_url }}" class="nav-link">blog</a></li>
+        <li><a href="{{ '/books.html' | relative_url }}" class="nav-link active">books</a></li>
+        <li><a href="{{ '/#contact' | relative_url }}" class="nav-link">contact</a></li>
+      </ul>
+    </nav>
+
+    <!-- HEADER -->
+    <section class="section">
+      <div class="section-header">
+        <span class="section-title">Reading Log</span>
+      </div>
+    </section>
+
+    <!-- CURRENTLY READING -->
+    {% assign currently_reading = site.data.books | where: "status", "Reading" %}
+    {% if currently_reading.size > 0 %}
+      <section class="section">
+        <div class="section-header">
+          <span class="section-title">Currently Reading</span>
+        </div>
+        <div class="book-list">
+          {% for book in currently_reading %}
+            {% if book.notes and book.notes != "" %}
+              <details class="book-row">
+                <summary class="book-summary">
+                  <span class="book-line"><span class="book-title">{{ book.title }}</span> - <span class="book-author">{{ book.author }}</span></span>
+                  <span class="book-status reading">[reading]</span>
+                </summary>
+                <div class="book-notes">{{ book.notes }}</div>
+              </details>
+            {% else %}
+              <div class="book-row">
+                <div class="book-summary no-notes">
+                  <span class="book-line"><span class="book-title">{{ book.title }}</span> - <span class="book-author">{{ book.author }}</span></span>
+                  <span class="book-status reading">[reading]</span>
+                </div>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </section>
+    {% endif %}
+
+    <!-- FINISHED BOOKS -->
+    <section class="section">
+      <div class="section-header">
+        <span class="section-title">Finished Books</span>
+      </div>
+      {% assign finished_books = site.data.books | where: "status", "Read" %}
+      {% if finished_books.size > 0 %}
+        <div class="book-list">
+          {% for book in finished_books %}
+            {% if book.notes and book.notes != "" %}
+              <details class="book-row">
+                <summary class="book-summary">
+                  <span class="book-line"><span class="book-title">{{ book.title }}</span> - <span class="book-author">{{ book.author }}</span></span>
+                  <span class="book-status">
+                    {% if book.rating and book.rating != "" %}
+                      [{{ book.rating }}]
+                    {% else %}
+                      [read]
+                    {% endif %}
+                  </span>
+                </summary>
+                <div class="book-notes">{{ book.notes }}</div>
+              </details>
+            {% else %}
+              <div class="book-row">
+                <div class="book-summary no-notes">
+                  <span class="book-line"><span class="book-title">{{ book.title }}</span> - <span class="book-author">{{ book.author }}</span></span>
+                  <span class="book-status">
+                    {% if book.rating and book.rating != "" %}
+                      [{{ book.rating }}]
+                    {% else %}
+                      [read]
+                    {% endif %}
+                  </span>
+                </div>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      {% else %}
+        <p class="text-muted">No finished books logged yet.</p>
+      {% endif %}
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+      <a href="{{ '/' | relative_url }}">← back to portfolio</a>
+      <span>Duong Tan Phuc</span>
+    </footer>
+  </div>
+
+</body>
+</html>

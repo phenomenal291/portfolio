@@ -1,42 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <link rel="icon" href="{{ '/assets/images/1311.png' | relative_url }}" />
-    <title>{{ page.title }} - Phuc's Portfolio</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+<head>
+  <meta charset="utf-8">
+  <link rel="icon" href="{{ '/assets/images/1311.png' | relative_url }}">
+  <title>{{ page.title }} - Phuc Duong</title>
+  <meta name="description" content="{{ page.description | default: page.title }}">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="stylesheet" href="{{ '/css/layout.css' | relative_url }}">
-    <link rel="stylesheet" href="{{ '/css/typography.css' | relative_url }}">
-    <link rel="stylesheet" href="{{ '/css/utilities.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/css/typography.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/css/layout.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/css/utilities.css' | relative_url }}">
+  <script defer src="{{ '/js/script.js' | relative_url }}"></script>
+</head>
+<body>
 
-    <script defer src="{{ '/js/script.js' | relative_url }}"></script>
-  </head>
-  <body>
-    <div class="navbar">
-      <a class="nav-title-link" href="{{ '/index.html' | relative_url }}">
-        <span class="nav-title">{{ site.title }}</span>
-      </a>
-      <a class="button" href="{{ '/blog.html' | relative_url }}">
-        <span class="button-text">← Back to Blog</span>
-      </a>
-    </div>
+  <div id="main-content">
+    <!-- NAV -->
+    <nav class="site-nav">
+      <a href="{{ '/' | relative_url }}" class="site-nav-title">phuc duong</a>
+      <ul class="site-nav-links">
+        <li><a href="{{ '/#projects' | relative_url }}" class="nav-link">projects</a></li>
+        <li><a href="{{ '/blog.html' | relative_url }}" class="nav-link active">blog</a></li>
+        <li><a href="{{ '/books.html' | relative_url }}" class="nav-link">books</a></li>
+        <li><a href="{{ '/#contact' | relative_url }}" class="nav-link">contact</a></li>
+      </ul>
+    </nav>
 
-    <div id="main-content">
-      <div id="project-header">
-        <div class="main-title">{{ page.title }}</div>
-        <div class="body-text">{{ page.date | date: "%B %d, %Y" }} • By Phuc</div>
-      </div>
-
-      <div id="project-details">
-        <div id="post-content" class="project-details-content">
-          {{ content }}
+    <!-- ARTICLE HEADER -->
+    <article>
+      <header style="margin-bottom: 28px;">
+        <div style="margin-bottom: 12px;">
+          <a href="{{ '/blog.html' | relative_url }}" class="meta-text">← back to blog</a>
         </div>
-      </div>
-    </div>
+        <h1 class="main-title" style="margin-bottom: 8px;">{{ page.title }}</h1>
+        <div class="meta-text">
+          <span>{{ page.date | date: "%B %d, %Y" }}</span>
+          {% if page.tags %}
+            <span> · </span>
+            <span>tags: {{ page.tags | join: ", " }}</span>
+          {% endif %}
+        </div>
+      </header>
 
-    <div id="footer" style="padding-top: 40px; border-top: 1px solid rgba(0,0,0,0.1); margin-top: 40px; text-align: center; width: 100%; opacity: 0.6; font-size: 14px;">
-      Based on <a href="https://github.com/ndoherty-xyz/unemployables-portfolio-template" target="_blank">Unemployables Portfolio Template</a> by <a href="https://twitter.com/ndoherty_xyz" target="_blank">ndoherty-xyz</a>
-    </div>
-  </body>
+      <!-- ARTICLE BODY -->
+      <div id="post-content" class="post-body">
+        {{ content }}
+      </div>
+    </article>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+      <a href="{{ '/blog.html' | relative_url }}">← back to blog</a>
+      <span>Duong Tan Phuc</span>
+    </footer>
+  </div>
+
+</body>
 </html>

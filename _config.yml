@@ -12,3 +12,12 @@ defaults:
     values:
       layout: post
       permalink: /blog/:title/
+
+exclude:
+  - manage.py
+  - build.rb
+  - goodreads_library_export.csv
+  - README.md
+  - LICENSE
+  - vendor/
+  - __pycache__/

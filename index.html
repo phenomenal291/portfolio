@@ -1,256 +1,110 @@
 ---
 layout: null
 ---
-
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
+<head>
+  <meta charset="utf-8">
+  <link rel="icon" href="{{ '/assets/images/1311.png' | relative_url }}">
+  <title>Phuc Duong - Portfolio</title>
+  <meta name="description" content="Computer Science student at HCMUT. Programming, algorithms, and systems.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- 
-      TODO
+  <link rel="stylesheet" href="{{ '/css/typography.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/css/layout.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/css/utilities.css' | relative_url }}">
+  <script defer src="{{ '/js/script.js' | relative_url }}"></script>
+</head>
+<body>
 
-      Upload your Unemployable (or whatever photo you like) to the assets/images folder
-      and change the name of the image below to match the uploaded one
+  <div id="main-content">
+    <!-- NAV -->
+    <nav class="site-nav">
+      <a href="{{ '/' | relative_url }}" class="site-nav-title">phuc duong</a>
+      <ul class="site-nav-links">
+        <li><a href="#projects" class="nav-link">projects</a></li>
+        <li><a href="{{ '/blog.html' | relative_url }}" class="nav-link">blog</a></li>
+        <li><a href="{{ '/books.html' | relative_url }}" class="nav-link">books</a></li>
+        <li><a href="#contact" class="nav-link">contact</a></li>
+      </ul>
+    </nav>
 
-      Change the title in the <title> tag to whatever you would like the title of your portfolio to be
-
-      This should be the same across all pages.
-     -->
-    <link rel="icon" href="./assets/images/1311.png" />
-		<title>Unemployables Portfolio</title>
-    <meta name="description" content="A portfolio template for the Unemployables community.">
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-		<link rel="stylesheet" href="./css/layout.css">
-    <link rel="stylesheet" href="./css/typography.css">
-    <link rel="stylesheet" href="./css/utilities.css">
-    <link rel="stylesheet" href="./css/decorations.css">
-
-    <script defer src="./js/script.js"></script>
-	</head>
-	<body>
-    <!-- NAVBAR -->
-    <div class="navbar">
-      <a class="nav-title-link" href="./index.html">
-        <span class="nav-title"></span>
-      </a>
-    </div>
-
-    <!-- MAIN PAGE CONTENT -->
-    <div id="main-content">
-
-      <!-- PORTFOLIO HEADER -->
-      <div id="portfolio-header" class="profile-style-subtle">
-        <div id="portfolio-header-image-container">
-          <!-- 
-            TODO
-
-            - Change the img "src" attribute to point to the Unemployable image you uploaded (or whatever image).
-            - Change the number to point to your Unemployable & replace the OpenSea link with your own
-            - If you aren't using an Unemployable as your image, remove the entire "a" element
-          -->
-          <div class="profile-photo-frame">
-            <img src="./assets/images/profile.png" class="portfolio-header-image" alt="Portrait photo of Phuc">
-            <div class="profile-noise-layer" aria-hidden="true"></div>
-          </div>
-          <span class="profile-badge">"What I cannot create, I do not understand." - Richard Fenyman</span>
-        </div>
-
-          <!-- 
-            TODO
-
-            - Change the main-title to whatver you want
-            - Change the body-text after that to a quick introduction to what you do
-            - Edit the button text if you feel like it. It will link to the projects section below.
-          -->
-        <div id="portfolio-header-text-container">
-            <div class="header-text">
-              <span class="main-title">Hey, I'm Phuc.</span>
-              <div class="body-text">Usually found tweaking something or getting lost in a story.</div>
-            </div>
-            
-            <div class="header-actions">
-              <a class="button button-dark" id="my-work-link">
-                <span class="button-text">View Projects</span> 
-                <image src="./assets/icons/arrow-right.svg" class="right-arrow-icon"/>
-              </a>
-              
-              <a class="button" href="./blog.html">
-                <span class="button-text">Read Blog</span> 
-              </a>
-
-              <a class="button" href="#contact-section">
-                <span class="button-text">Contact Me</span> 
-              </a>
-            </div>
+    <!-- INTRO -->
+    <section class="profile-section">
+      <div class="profile-header">
+        <img src="{{ '/assets/images/profile.png' | relative_url }}" alt="Phuc Duong" class="profile-avatar">
+        <div class="profile-intro">
+          <div class="profile-name">Duong Tan Phuc</div>
+          <div class="profile-tagline">CS student @ HCMUT (VNU-HCM)</div>
         </div>
       </div>
+      <div class="body-text">
+        <p>I’m a second-year Computer Science student at Ho Chi Minh City University of Technology (VNU-HCM).</p>
+        <p>I have a deep passion for programming and algorithms, driven by a desire to understand the "why" behind the "how" a curiosity that extends to systems, architecture, and code.</p>
+      </div>
+    </section>
 
-      <!-- ABOUT SECTION -->
-      <div id="about-section" class="reveal">
-        <span class="subheader-text">About Me</span>
-        <div class="about-section-content">
-          <div class="body-text">I’m a second-year Computer Science student at Ho Chi Minh City University of Technology (VNU-HCM). Beyond my regular studies, I’m part of an AI research group at HCMUT, where I enjoy tackling real-world problems with cutting-edge technology.</div>
-          <div class="body-text">I have a deep passion for programming and algorithms, driven by a desire to understand the "why" behind the "how"—a curiosity that extends to tweaking nvim and ricing my Linux system. When I’m not at my keyboard, I’m an avid reader, usually found with a mystery novel and my Kindle, seeking a bit of quiet focus away from the screen.</div>
-        </div>
+    <!-- PROJECTS -->
+    <section id="projects" class="section">
+      <div class="section-header">
+        <span class="section-title">Selected Projects</span>
       </div>
 
-      <!-- PROJECTS / MY WORK SECTION -->
-      <div id="my-work-section" class="reveal">
-        <span class="subheader-text">My Projects</span>
-
-        <div class="projects-container">
-          <!-- 
-            TODO
-
-            This is where the project cards live. Here's a base level project card for you to copy:
-            <div class="project-card">
-              <img src="./assets/images/IMAGE_NAME" class="project-image">
-              <div class="project-card-text-container">
-                <div class="subheader-text project-title">PROJECT_NAME</div>
-                <div class="body-text project-card-text">SMALL_PROJECT_DESCRIPTION</div>
-              </div>
-              <a class="button" href="./project-pages/PROJECT_PAGE_NAME.html">
-                <span class="button-text">Read More</span>
-                <image src="./assets/icons/arrow-right.svg" class="right-arrow-icon"/>
-              </a>
-            </div>
-
-            - To add a project to the this area, copy the above, paste it below this comment, and change the following:
-                - IMAGE_NAME: the name of the image file in assets/images
-                - PROJECT_NAME: the name of the project (keep it short, it only shows 1 line)
-                - SMALL_PROJECT_DESCRIPTION: a quick project description (max 4 lines)
-                - PROJECT_PAGE_NAME.html: the html filename for the project (must be in project-pages folder)
-          -->
-          <div class="project-card card-clickable" onclick="window.location.href='./project-pages/planetary-accretion-disk.html'">
-            <img src="./assets/images/planetary-accretion-disk/planetary-accretion-disk-demo-5000.png" class="project-image">
-            <div class="project-card-text-container">
-              <div class="subheader-text project-title">Planetary Accretion Disk Simulation</div>
-              <div class="body-text project-card-text">A C++ Physics Engine and Barnes-Hut simulation from scratch demonstrates the planetary accretion disk</div>
-            </div>
-            <div class="project-card-actions">
-              <!-- <a class="button" href="./project-pages/planetary-accretion-disk.html" onclick="event.stopPropagation();">
-                <span class="button-text">Read More</span>
-                <image src="./assets/icons/arrow-right.svg" class="right-arrow-icon"/>
-              </a> -->
-              <a class="button" href="https://github.com/phenomenal291/Planetary-Accretion-Disk" target="_blank" onclick="event.stopPropagation();">
-                <span class="button-text">GitHub</span>
-                <image src="./assets/icons/arrow-right.svg" class="right-arrow-icon"/>
-              </a>
-            </div>
+      <ul class="item-list">
+        <li class="item-row">
+          <div class="item-title-row">
+            <a href="{{ '/project-pages/planetary-accretion-disk.html' | relative_url }}" class="item-title">Planetary Accretion Disk Simulation</a>
           </div>
-          <div class="project-card card-clickable" onclick="window.location.href='./project-pages/inverse-game-of-life.html'">
-            <img src="./assets/images/inverse-game-of-life/game-of-life-demo2.png" class="project-image">
-            <div class="project-card-text-container">
-              <div class="subheader-text project-title">Inverse Game Of Life </div>
-              <div class="body-text project-card-text">A C++ simulation solving the Inverse Game of Life using a Genetic Algorithm and Bitboards.</div>
-            </div>
-            <div class="project-card-actions">
-              <!-- <a class="button" href="./project-pages/project-template.html" onclick="event.stopPropagation();">
-                <span class="button-text">Read More</span>
-                <image src="./assets/icons/arrow-right.svg" class="right-arrow-icon"/>
-              </a> -->
-              <a class="button" href="https://github.com/phenomenal291/inverse-game-of-life" target="_blank" onclick="event.stopPropagation();">
-                <span class="button-text">GitHub</span>
-                <image src="./assets/icons/arrow-right.svg" class="right-arrow-icon"/>
-              </a>
-            </div>
+          <p class="item-description">A C++ Physics Engine and Barnes-Hut simulation from scratch demonstrates the planetary accretion disk.</p>
+          <div class="item-links">
+            <a href="{{ '/project-pages/planetary-accretion-disk.html' | relative_url }}">Overview</a>
+            <a href="https://github.com/phenomenal291/Planetary-Accretion-Disk" target="_blank" rel="noopener">GitHub ↗</a>
           </div>
-          <div class="project-card card-clickable" onclick="window.location.href='./project-pages/self-driving-car-2d.html'">
-            <img src="./assets/images/sketchbook.jpeg" class="project-image">
-            <div class="project-card-text-container">
-              <div class="subheader-text project-title">Self-Driving Car 2D</div>
-              <div class="body-text project-card-text">Autonomous car from scratch using Neural Network and Genetic Algorithms</div>
-            </div>
-            <div class="project-card-actions">
-              <a class="button" href="https://github.com/phenomenal291/self-driving-car" target="_blank" onclick="event.stopPropagation();">
-                <span class="button-text">GitHub</span>
-                <image src="./assets/icons/arrow-right.svg" class="right-arrow-icon"/>
-              </a>
-            </div>
+        </li>
+
+        <li class="item-row">
+          <div class="item-title-row">
+            <a href="{{ '/project-pages/inverse-game-of-life.html' | relative_url }}" class="item-title">Inverse Game of Life</a>
           </div>
-        </div>
+          <p class="item-description">A C++ simulation solving the Inverse Game of Life using a Genetic Algorithm and Bitboards.</p>
+          <div class="item-links">
+            <a href="{{ '/project-pages/inverse-game-of-life.html' | relative_url }}">Overview</a>
+            <a href="https://github.com/phenomenal291/inverse-game-of-life" target="_blank" rel="noopener">GitHub ↗</a>
+          </div>
+        </li>
+
+        <li class="item-row">
+          <div class="item-title-row">
+            <a href="{{ '/project-pages/self-driving-car-2d.html' | relative_url }}" class="item-title">Self-Driving Car 2D</a>
+          </div>
+          <p class="item-description">Autonomous car from scratch using Neural Network and Genetic Algorithms.</p>
+          <div class="item-links">
+            <a href="{{ '/project-pages/self-driving-car-2d.html' | relative_url }}">Overview</a>
+            <a href="https://github.com/phenomenal291/self-driving-car" target="_blank" rel="noopener">GitHub ↗</a>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section">
+      <div class="section-header">
+        <span class="section-title">Contact & Links</span>
       </div>
-
-      <!-- BLOG SECTION -->
-      <div id="blog-section" class="reveal">
-        <span class="subheader-text blog-section-heading">Latest Thoughts</span>
-        
-        {% assign sorted_posts = site.posts | sort: 'date' | reverse %}
-        <div class="projects-container">
-          {% if sorted_posts.size > 0 %}
-            {% for post in sorted_posts limit:3 %}
-              <div class="project-card card-clickable blog-card" onclick="window.location.href='{{ post.url | relative_url }}'">
-                <div class="project-card-text-container">
-                  <div class="subheader-text project-title">{{ post.title }}</div>
-                  <div class="body-text blog-post-date">{{ post.date | date: "%B %d, %Y" }}</div>
-                  <div class="body-text project-card-text">{{ post.description | default: post.excerpt | strip_html | strip_newlines }}</div>
-                </div>
-                <!-- <a class="button" href="{{ post.url | relative_url }}" onclick="event.stopPropagation();">
-                  <span class="button-text">Read Article</span>
-                  <img src="./assets/icons/arrow-right.svg" class="right-arrow-icon" alt="Right Arrow"/>
-                </a> -->
-              </div>
-            {% endfor %}
-          {% else %}
-            <div class="body-text empty-state-text">No latest posts yet.</div>
-          {% endif %}
-        </div>
-
-        <div class="view-all-posts-row">
-          <a class="button" href="./blog.html">
-            <span class="button-text">View All Posts</span>
-          </a>
-        </div>
+      <div class="contact-links">
+        <a href="mailto:dtanphuc9@gmail.com">email</a>
+        <a href="https://github.com/phenomenal291" target="_blank" rel="noopener">github</a>
+        <a href="https://linkedin.com/in/duongtanphuc/" target="_blank" rel="noopener">linkedin</a>
+        <a href="https://facebook.com/tanphuc.duong.75" target="_blank" rel="noopener">facebook</a>
       </div>
-
-
-      <!-- CONTACT SECTION -->
-      <div id="contact-section" class="reveal">
-        <div class="contact-section-inner">
-          <span class="subheader-text contact-title">Feel free to reach out</span>
-          <div class="body-text contact-description">I am open to Work, for DM, and share interests</div>
-          
-          <div class="projects-container contact-grid">
-            <a class="contact-card" target="_blank" href="https://linkedin.com/in/duongtanphuc/">
-              <div class="contact-card-icon-container">
-                <span class="subheader-text contact-icon-text">in</span>
-              </div>
-              <span class="button-text">LinkedIn</span>
-            </a>
-
-            <a class="contact-card" target="_blank" href="https://github.com/phenomenal291">
-              <div class="contact-card-icon-container">
-                <span class="subheader-text contact-icon-text">gh</span>
-              </div>
-              <span class="button-text">GitHub</span>
-            </a>
-
-            <a class="contact-card" target="_blank" href="https://facebook.com/tanphuc.duong.75">
-              <div class="contact-card-icon-container">
-                <span class="subheader-text contact-icon-text">fb</span>
-              </div>
-              <span class="button-text">Facebook</span>
-            </a>
-
-            <a class="contact-card" href="mailto:dtanphuc9@gmail.com">
-              <div class="contact-card-icon-container">
-                <span class="subheader-text contact-icon-text">@</span>
-              </div>
-              <span class="button-text">Email Me</span>
-            </a>
-          </div>
-        </div>
-      </div>
-
-
-    </div>
+    </section>
 
     <!-- FOOTER -->
-    <div id="footer" class="site-footer">
-      Based on <a href="https://github.com/ndoherty-xyz/unemployables-portfolio-template" target="_blank">Unemployables Portfolio Template</a> by <a href="https://twitter.com/ndoherty_xyz" target="_blank">ndoherty-xyz</a>
-    </div>
+    <footer class="site-footer">
+      <span>Duong Tan Phuc</span>
+      <span>built with jekyll & markdown</span>
+    </footer>
+  </div>
 
-  </body>
+</body>
 </html>
